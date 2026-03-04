@@ -89,18 +89,6 @@ export default function Navbar() {
           </div>
 
           {/* Desktop links */}
-          <div className="nav-links">
-            <button className="nav-link" onClick={() => scrollToSection('backstage')} style={{ background: 'none', border: 'none' }}>
-              {t('nav.backstage')}
-            </button>
-            <button className="nav-link" onClick={() => scrollToSection('fair')} style={{ background: 'none', border: 'none' }}>
-              {t('nav.revenus')}
-            </button>
-            <button className="nav-link" onClick={() => scrollToSection('governance')} style={{ background: 'none', border: 'none' }}>
-              {t('nav.gouvernance')}
-            </button>
-          </div>
-
           {/* Right: Lang + Join + Hamburger */}
           <div className="nav-right">
             {/* Lang switcher */}

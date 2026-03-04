@@ -371,9 +371,9 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
   white-space: nowrap;
 }
 
-/* Hamburger */
+/* Hamburger — toujours visible */
 .hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 5px;
   width: 24px;
@@ -1511,7 +1511,7 @@ h1.hero-title {
     grid-template-columns: 1fr;
   }
   .nav-links { display: none; }
-  .hamburger { display: flex; }
+  /* hamburger déjà visible en permanence */
   .nav-cta-btn { display: none; }
 }
 
