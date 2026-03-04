@@ -994,6 +994,7 @@ h1.hero-title {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  margin-top: clamp(100px, 14vw, 180px);
 }
 
 /* Logo Ark of Culture */
