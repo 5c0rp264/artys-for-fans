@@ -21,6 +21,7 @@ function AnimatedDigit({ digit, color }: { digit: string; color: string }) {
       }, 320);
       return () => clearTimeout(t);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [digit]);
 
   return (

@@ -221,6 +221,7 @@ function MessageBubble({ msg, onDone, isLast }: { msg: Message; onDone: () => vo
       }
     }, 900);
     return () => clearTimeout(t1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -263,14 +264,15 @@ function EchoTerminal() {
   ]);
   const [input,   setInput]   = useState('');
   const [loading, setLoading] = useState(false);
-  const [_step,   setStep]    = useState(0);
-  const [_demo,   setDemo]    = useState(false);
+  const [, setStep]    = useState(0);
+  const [, setDemo]    = useState(false);
   const [apiError, setApiError] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMessages([{ role: 'assistant', content: welcomeByLang[lang] || welcomeByLang.fr }]);
     setStep(0); setDemo(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
 
   useEffect(() => {

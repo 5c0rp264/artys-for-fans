@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Track {
@@ -34,22 +34,24 @@ const DEMO_SEQUENCE: ChatMessage[] = [
 
 // ─── Particules flottantes ────────────────────────────────────────────────────
 function Particles() {
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 18 }, (_, i) => ({
+        left: `${(i * 5.5) % 100}%`,
+        top: `${(i * 7.7) % 100}%`,
+        animationDelay: `${(i * 0.35) % 6}s`,
+        animationDuration: `${4 + (i % 5)}s`,
+        width: `${1 + (i % 2)}px`,
+        height: `${1 + (i % 2)}px`,
+        opacity: 0.15 + (i % 7) * 0.05,
+      })),
+    [],
+  );
+
   return (
     <div className="echo-particles" aria-hidden="true">
-      {Array.from({ length: 18 }).map((_, i) => (
-        <div
-          key={i}
-          className="echo-particle"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top:  `${Math.random() * 100}%`,
-            animationDelay:    `${Math.random() * 6}s`,
-            animationDuration: `${4 + Math.random() * 5}s`,
-            width:  `${1 + Math.random() * 2}px`,
-            height: `${1 + Math.random() * 2}px`,
-            opacity: 0.15 + Math.random() * 0.35,
-          }}
-        />
+      {particles.map((style, i) => (
+        <div key={i} className="echo-particle" style={style} />
       ))}
     </div>
   );
@@ -109,12 +111,10 @@ function EchoMessage({ msg, onDone }: { msg: ChatMessage; onDone: () => void }) 
 
   useEffect(() => {
     if (msg.role === 'user') {
-      // Apparition directe pour l'utilisateur
       setTimeout(() => { setTyped(msg.text); onDone(); }, 300);
       return;
     }
 
-    // Indicateur "typing..." pendant 900ms puis texte complet
     const t1 = setTimeout(() => {
       setTyping(false);
       setTyped(msg.text);
@@ -125,6 +125,7 @@ function EchoMessage({ msg, onDone }: { msg: ChatMessage; onDone: () => void }) 
       }
     }, 900);
     return () => clearTimeout(t1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -161,39 +162,37 @@ export default function EchoVisual() {
   const [running, setRunning]   = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }, [messages, step]);
-
-  // Lance la séquence au mount
-  useEffect(() => {
-    const t = setTimeout(() => startSequence(), 800);
-    return () => clearTimeout(t);
-  }, []);
-
-  const startSequence = () => {
-    setMessages([]);
-    setStep(0);
-    setRunning(true);
-    playStep(0);
-  };
-
-  const playStep = (i: number) => {
+  const playStep = useCallback((i: number) => {
     if (i >= DEMO_SEQUENCE.length) { setRunning(false); return; }
     const delay = i === 0 ? 0 : 600;
     setTimeout(() => {
       setMessages(prev => [...prev, DEMO_SEQUENCE[i]]);
       setStep(i + 1);
     }, delay);
-  };
+  }, []);
 
-  const handleDone = () => {
+  const startSequence = useCallback(() => {
+    setMessages([]);
+    setStep(0);
+    setRunning(true);
+    playStep(0);
+  }, [playStep]);
+
+  const handleDone = useCallback(() => {
     setStep(prev => {
       playStep(prev);
       return prev;
     });
-  };
+  }, [playStep]);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, [messages, step]);
+
+  useEffect(() => {
+    const t = setTimeout(() => startSequence(), 800);
+    return () => clearTimeout(t);
+  }, [startSequence]);
 
   return (
     <div className="echo-visual">

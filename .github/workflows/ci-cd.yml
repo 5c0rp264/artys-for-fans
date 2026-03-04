@@ -1,0 +1,123 @@
+name: CI/CD - Lint, Build & FTP Deploy
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Typecheck & Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+
+  build:
+    name: Build
+    needs: [quality]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          include-hidden-files: true
+          retention-days: 3
+
+  deploy:
+    name: Deploy to FTP
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./dist/
+
+      - name: Send deployment SMS
+        if: always()
+        env:
+          FREE_MOBILE_USER: ${{ secrets.FREE_MOBILE_USER }}
+          FREE_MOBILE_PASS: ${{ secrets.FREE_MOBILE_PASS }}
+          DEPLOY_STATUS: ${{ job.status }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${FREE_MOBILE_USER:-}" ] || [ -z "${FREE_MOBILE_PASS:-}" ]; then
+            echo "SMS credentials not configured — skipping"
+            exit 0
+          fi
+          if [ "$DEPLOY_STATUS" = "success" ]; then
+            MSG="ARTYS FANS DEPLOYED: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          else
+            MSG="ARTYS FANS DEPLOY FAILED — https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          fi
+          curl -fsS --get \
+            --data-urlencode "user=$FREE_MOBILE_USER" \
+            --data-urlencode "pass=$FREE_MOBILE_PASS" \
+            --data-urlencode "msg=$MSG" \
+            https://smsapi.free-mobile.fr/sendmsg
+
+  notify-ci-failure:
+    name: Notify CI failure
+    if: >-
+      always()
+      && github.event_name == 'push'
+      && github.ref == 'refs/heads/main'
+      && (needs.quality.result == 'failure' || needs.build.result == 'failure')
+    needs: [quality, build]
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Send failure SMS
+        env:
+          FREE_MOBILE_USER: ${{ secrets.FREE_MOBILE_USER }}
+          FREE_MOBILE_PASS: ${{ secrets.FREE_MOBILE_PASS }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${FREE_MOBILE_USER:-}" ] || [ -z "${FREE_MOBILE_PASS:-}" ]; then
+            echo "SMS credentials not configured — skipping"
+            exit 0
+          fi
+          curl -fsS --get \
+            --data-urlencode "user=$FREE_MOBILE_USER" \
+            --data-urlencode "pass=$FREE_MOBILE_PASS" \
+            --data-urlencode "msg=ARTYS FANS CI FAILED on main — https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            https://smsapi.free-mobile.fr/sendmsg
