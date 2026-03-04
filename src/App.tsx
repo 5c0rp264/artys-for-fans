@@ -49,13 +49,13 @@ export default function App() {
         {/* 0 — Hero */}
         <HeroSection />
 
-        {/* 1 — Le problème */}
-        <div className="section-divider" aria-hidden="true" />
-        <ProblemSection />
-
-        {/* 2 — ECHO */}
+        {/* 1 — ECHO */}
         <div className="section-divider" aria-hidden="true" />
         <EchoSection />
+
+        {/* 2 — Le problème */}
+        <div className="section-divider" aria-hidden="true" />
+        <ProblemSection />
 
         {/* 3 — Backstage Guilds */}
         <div className="section-divider" aria-hidden="true" />
