@@ -976,7 +976,7 @@ h1.hero-title {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(40px, 6vw, 80px);
-  align-items: center;
+  align-items: start;
 }
 .governance-text p {
   font-size: clamp(1rem, 2vw, 1.1rem);
@@ -988,145 +988,128 @@ h1.hero-title {
   color: var(--text);
   font-weight: 600;
 }
-.governance-visual {
-  position: relative;
+
+/* ── Colonne droite ──────────────────────────────────────── */
+.governance-right {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
+  flex-direction: column;
+  gap: 32px;
 }
 
-/* Federation Ring */
-.federation-ring {
-  position: relative;
-  width: 320px;
-  height: 320px;
-  flex-shrink: 0;
-}
-.ring-circle {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-}
-.ring-outer {
-  inset: 0;
-  border-color: rgba(0, 229, 176, 0.12);
-  animation: ring-rotate 40s linear infinite;
-}
-.ring-middle {
-  inset: 40px;
-  border-color: rgba(0, 229, 176, 0.08);
-  animation: ring-rotate 30s linear infinite reverse;
-}
-.ring-inner {
-  inset: 80px;
-  background: var(--surface);
-  border-color: var(--accent-border);
+/* Logo Ark of Culture */
+.ark-logo-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  gap: 16px;
+  padding: 32px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
 }
-.ring-inner-title {
-  font-family: var(--font-title);
-  font-weight: 900;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  white-space: pre-line;
-  line-height: 1.2;
+.ark-logo-svg {
+  width: 160px;
+  height: 160px;
 }
-.ring-inner-sub {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  margin-top: 4px;
-}
-
-@keyframes ring-rotate {
+@keyframes arkOrbit {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
-
-/* College nodes */
-.college-node {
-  position: absolute;
+.ark-logo-label {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  cursor: default;
 }
-.node-dot {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid var(--accent-border);
-  background: var(--surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  transition: border-color var(--transition);
+.ark-logo-name {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
 }
-.node-dot:hover { border-color: var(--accent); }
-.node-label {
+.ark-logo-sub {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+/* Pricing rows */
+.gov-pricing {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.gov-pricing-title {
+  font-family: var(--font-title);
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-secondary);
-  white-space: nowrap;
+  padding: 14px 20px 10px;
+  border-bottom: 1px solid var(--border);
 }
-
-/* Membership cards */
-.member-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 40px;
+.gov-pricing-rows {
+  display: flex;
+  flex-direction: column;
 }
-.member-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 16px;
+.gov-pricing-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.gov-pricing-row:last-child { border-bottom: none; }
+.gov-pricing-row:hover { background: rgba(255,255,255,0.03); }
+.gov-pricing-row-fan {
+  background: rgba(0,229,176,0.03);
+  border-left: 3px solid var(--accent);
+}
+.gov-pricing-row-fan:hover { background: rgba(0,229,176,0.06); }
+.gov-tier-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  width: 28px;
   text-align: center;
-  transition: border-color var(--transition), transform var(--transition);
 }
-.member-card:hover {
-  border-color: var(--accent-border);
-  transform: translateY(-3px);
+.gov-tier-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.member-card.fan-card {
-  border-color: var(--accent-border);
-  background: rgba(0, 229, 176, 0.04);
-}
-.member-name {
+.gov-tier-name {
   font-family: var(--font-title);
   font-weight: 800;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: var(--text);
-  margin-bottom: 8px;
 }
-.member-desc {
+.gov-tier-desc {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 12px;
+  line-height: 1.5;
 }
-.member-price {
+.gov-tier-price {
   font-family: var(--font-title);
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  color: var(--accent);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.gov-pricing-row-fan .gov-tier-price {
   color: var(--accent);
 }
 
@@ -1447,12 +1430,12 @@ h1.hero-title {
   .governance-grid {
     grid-template-columns: 1fr;
   }
-  .governance-visual {
-    display: none;
+  .governance-right {
+    order: -1;
   }
-  .member-cards {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .ark-logo-svg {
+    width: 120px;
+    height: 120px;
   }
   .cta-inner {
     grid-template-columns: 1fr;
