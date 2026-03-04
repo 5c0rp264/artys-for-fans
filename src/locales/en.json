@@ -4,14 +4,14 @@
     "revenus": "Revenue",
     "gouvernance": "Governance",
     "rejoindre": "Join →",
-    "toggle_fans": "For fans",
-    "toggle_artists": "For artists"
+    "toggle_fans": "Fans",
+    "toggle_artists": "Artists"
   },
   "hero": {
     "badge": "Fans & Supporters",
     "title_1": "The music you love",
     "title_2": "deserves",
-    "title_highlight": "better.",
+    "title_highlight": "deserves better.",
     "title_3": "So do you.",
     "subtitle": "Artys is the first platform where listening to music can earn you money, connect you to your favorite artists, and change their careers.",
     "cta_primary": "Join for free →",
