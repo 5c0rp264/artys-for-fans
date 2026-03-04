@@ -465,24 +465,6 @@ export default function EchoSection() {
           <EchoTerminal />
         </div>
 
-        {/* 3 pilliers sous le terminal */}
-        <div className="echo-pillars" data-anim>
-          <div className="echo-pillar">
-            <span className="echo-pillar-icon">🎵</span>
-            <strong>{t('echo.pillar_1_title') || 'Playlists instantanées'}</strong>
-            <p>{t('echo.pillar_1_desc') || 'Une humeur, une activité — ECHO compose en secondes.'}</p>
-          </div>
-          <div className="echo-pillar">
-            <span className="echo-pillar-icon">💸</span>
-            <strong>{t('echo.pillar_2_title') || 'Tes écoutes rémunèrent'}</strong>
-            <p>{t('echo.pillar_2_desc') || 'Chaque stream va directement aux artistes que tu soutiens.'}</p>
-          </div>
-          <div className="echo-pillar">
-            <span className="echo-pillar-icon">🔗</span>
-            <strong>{t('echo.pillar_3_title') || 'Artistes de ta Guilde'}</strong>
-            <p>{t('echo.pillar_3_desc') || 'ECHO intègre en priorité les artistes de ton Backstage.'}</p>
-          </div>
-        </div>
 
       </div>
     </section>
