@@ -3,17 +3,18 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import ArtysTicker from '../ui/Ticker';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
   const { t } = useTranslation();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const badgeRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctasRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const containerRef  = useRef<HTMLDivElement>(null);
+  const badgeRef      = useRef<HTMLDivElement>(null);
+  const titleRef      = useRef<HTMLDivElement>(null);
+  const subtitleRef   = useRef<HTMLParagraphElement>(null);
+  const ctasRef       = useRef<HTMLDivElement>(null);
+  const tickerRef     = useRef<HTMLDivElement>(null);
   const underlinePath = useRef<SVGPathElement>(null);
 
   useGSAP(() => {
@@ -23,22 +24,16 @@ export default function HeroSection() {
       { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', delay: 0.1 }
     );
 
-    // Title words animation
+    // Title words
     const words = titleRef.current?.querySelectorAll('.word');
-    if (words && words.length > 0) {
+    if (words?.length) {
       gsap.fromTo(words,
         { opacity: 0, y: 60, rotateX: -20 },
-        {
-          opacity: 1, y: 0, rotateX: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          stagger: 0.08,
-          delay: 0.2,
-        }
+        { opacity: 1, y: 0, rotateX: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.2 }
       );
     }
 
-    // Underline SVG
+    // Underline
     if (underlinePath.current) {
       gsap.fromTo(underlinePath.current,
         { strokeDashoffset: 400 },
@@ -47,71 +42,50 @@ export default function HeroSection() {
     }
 
     // Subtitle
-    gsap.to(subtitleRef.current, {
-      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.9
-    });
+    gsap.to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.9 });
 
     // CTAs
-    gsap.to(ctasRef.current, {
-      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.1
-    });
+    gsap.to(ctasRef.current, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.1 });
 
-    // Stats
-    gsap.to(statsRef.current, {
-      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.3
-    });
+    // Ticker
+    gsap.to(tickerRef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 1.4 });
 
   }, { scope: containerRef });
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // Split title into words for animation
-  const titleWords = [
-    { text: t('hero.title_1'), isHighlight: false, breakAfter: false },
-    { text: t('hero.title_2'), isHighlight: false, breakAfter: false },
-    { text: t('hero.title_highlight'), isHighlight: true, breakAfter: true },
-    { text: t('hero.title_3'), isHighlight: false, breakAfter: false },
-  ];
 
   return (
     <section className="hero" ref={containerRef} id="hero">
       <div className="hero-bg" aria-hidden="true" />
+
       <div className="container">
-        <div className="hero-content">
+        <div className="hero-content" style={{ maxWidth: '860px' }}>
 
           {/* Badge */}
-          <div ref={badgeRef} className="section-badge" aria-label="Catégorie">
+          <div ref={badgeRef} className="section-badge">
             <span>✦</span>
             {t('hero.badge')}
           </div>
 
           {/* Title */}
-          <div ref={titleRef} className="hero-title" aria-label={`${t('hero.title_1')} ${t('hero.title_2')} ${t('hero.title_highlight')} ${t('hero.title_3')}`}>
-            {titleWords.map((item, i) => (
-              item.isHighlight ? (
-                <span key={i} className="word hero-underline-wrap" style={{ color: 'var(--accent)' }}>
-                  {item.text}
-                  <svg className="hero-underline-svg" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
-                    <path
-                      ref={underlinePath}
-                      d="M4 8 Q75 2 150 6 Q225 10 296 4"
-                      strokeDasharray="400"
-                      strokeDashoffset="400"
-                    />
-                  </svg>
-                  {item.breakAfter && <br />}
-                  {' '}
-                </span>
-              ) : (
-                <span key={i} className="word">
-                  {item.text}{item.breakAfter && <br />}
-                  {' '}
-                </span>
-              )
-            ))}
+          <div ref={titleRef} className="hero-title" style={{ perspective: '800px' }}>
+            <span className="word">{t('hero.title_1')}</span>
+            {' '}
+            <span className="word">{t('hero.title_2')}</span>
+            {' '}
+            <br className="line-break" />
+            <span className="word hero-underline-wrap" style={{ color: 'var(--accent)' }}>
+              {t('hero.title_highlight')}
+              <svg className="hero-underline-svg" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
+                <path ref={underlinePath}
+                  d="M4 8 Q75 2 150 6 Q225 10 296 4"
+                  strokeDasharray="400" strokeDashoffset="400" />
+              </svg>
+            </span>
+            {' '}
+            <span className="word">{t('hero.title_3')}</span>
           </div>
 
           {/* Subtitle */}
@@ -121,34 +95,17 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <div ref={ctasRef} className="hero-ctas">
-            <button
-              className="btn-primary"
-              onClick={() => scrollToSection('cta')}
-              aria-label={t('hero.cta_primary')}
-            >
+            <button className="btn-primary" onClick={() => scrollTo('cta')}>
               {t('hero.cta_primary')}
             </button>
-            <button
-              className="btn-secondary"
-              onClick={() => scrollToSection('royaltips')}
-              aria-label={t('hero.cta_secondary')}
-            >
+            <button className="btn-secondary" onClick={() => scrollTo('echo')}>
               {t('hero.cta_secondary')}
             </button>
           </div>
 
-          {/* Stats */}
-          <div ref={statsRef} className="hero-stats">
-            <div className="hero-stat-card">
-              <div className="hero-stat-number">{t('hero.stat1_number')}</div>
-              <div className="hero-stat-subtitle">{t('hero.stat1_subtitle')}</div>
-              <div className="hero-stat-body">{t('hero.stat1_body')}</div>
-            </div>
-            <div className="hero-stat-card">
-              <div className="hero-stat-number">{t('hero.stat2_number')}</div>
-              <div className="hero-stat-subtitle">{t('hero.stat2_subtitle')}</div>
-              <div className="hero-stat-body">{t('hero.stat2_body')}</div>
-            </div>
+          {/* Live Ticker */}
+          <div ref={tickerRef} style={{ opacity: 0, transform: 'translateY(16px)' }}>
+            <ArtysTicker />
           </div>
 
         </div>

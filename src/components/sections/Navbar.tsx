@@ -92,10 +92,10 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="nav-links">
-            <button className="nav-link" onClick={() => scrollToSection('royaltips')} style={{ background: 'none', border: 'none' }}>
+            <button className="nav-link" onClick={() => scrollToSection('backstage')} style={{ background: 'none', border: 'none' }}>
               {t('nav.backstage')}
             </button>
-            <button className="nav-link" onClick={() => scrollToSection('comparison')} style={{ background: 'none', border: 'none' }}>
+            <button className="nav-link" onClick={() => scrollToSection('fair')} style={{ background: 'none', border: 'none' }}>
               {t('nav.revenus')}
             </button>
             <button className="nav-link" onClick={() => scrollToSection('governance')} style={{ background: 'none', border: 'none' }}>
@@ -120,10 +120,9 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* CTA */}
+            {/* CTA desktop — visible */}
             <button
-              className="btn-primary"
-              style={{ fontSize: 'clamp(0.62rem, 1.2vw, 0.78rem)', padding: '8px 18px', display: 'none' }}
+              className="btn-primary nav-cta-btn"
               onClick={() => scrollToSection('cta')}
               aria-label="Rejoindre"
             >
@@ -147,10 +146,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
-        <button className="mobile-nav-link" onClick={() => scrollToSection('royaltips')} style={{ background: 'none', border: 'none', textAlign: 'left', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
+        <button className="mobile-nav-link" onClick={() => scrollToSection('backstage')} style={{ background: 'none', border: 'none', textAlign: 'left', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
           {t('nav.backstage')}
         </button>
-        <button className="mobile-nav-link" onClick={() => scrollToSection('comparison')} style={{ background: 'none', border: 'none', textAlign: 'left', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
+        <button className="mobile-nav-link" onClick={() => scrollToSection('echo')} style={{ background: 'none', border: 'none', textAlign: 'left', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
+          ECHO
+        </button>
+        <button className="mobile-nav-link" onClick={() => scrollToSection('fair')} style={{ background: 'none', border: 'none', textAlign: 'left', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
           {t('nav.revenus')}
         </button>
         <button className="mobile-nav-link" onClick={() => scrollToSection('governance')} style={{ background: 'none', border: 'none', textAlign: 'left', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>

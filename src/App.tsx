@@ -5,9 +5,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Navbar from './components/sections/Navbar';
 import HeroSection from './components/sections/HeroSection';
-import RoyaltipsSection from './components/sections/RoyaltipsSection';
 import ProblemSection from './components/sections/ProblemSection';
-import ComparisonSection from './components/sections/ComparisonSection';
+import EchoSection from './components/sections/EchoSection';
+import BackstageSection from './components/sections/BackstageSection';
+import ReferralSection from './components/sections/ReferralSection';
+import FairSection from './components/sections/FairSection';
+import SocialProofSection from './components/sections/SocialProofSection';
 import GovernanceSection from './components/sections/GovernanceSection';
 import CTASection from './components/sections/CTASection';
 import Footer from './components/sections/Footer';
@@ -40,24 +43,44 @@ export default function App() {
       {/* Navigation */}
       <Navbar />
 
-      {/* Main content */}
+      {/* Main content — ordre exact du brief */}
       <main id="main-content" role="main">
+
+        {/* 0 — Hero */}
         <HeroSection />
 
-        <div className="section-divider" aria-hidden="true" />
-        <RoyaltipsSection />
-
+        {/* 1 — Le problème */}
         <div className="section-divider" aria-hidden="true" />
         <ProblemSection />
 
+        {/* 2 — ECHO */}
         <div className="section-divider" aria-hidden="true" />
-        <ComparisonSection />
+        <EchoSection />
 
+        {/* 3 — Backstage Guilds */}
+        <div className="section-divider" aria-hidden="true" />
+        <BackstageSection />
+
+        {/* 4 — Parrainage */}
+        <div className="section-divider" aria-hidden="true" />
+        <ReferralSection />
+
+        {/* 5 — Streaming équitable */}
+        <div className="section-divider" aria-hidden="true" />
+        <FairSection />
+
+        {/* 6 — Preuve sociale */}
+        <div className="section-divider" aria-hidden="true" />
+        <SocialProofSection />
+
+        {/* 7 — Gouvernance */}
         <div className="section-divider" aria-hidden="true" />
         <GovernanceSection />
 
+        {/* 8 — Waiting List / CTA */}
         <div className="section-divider" aria-hidden="true" />
         <CTASection />
+
       </main>
 
       {/* Footer */}

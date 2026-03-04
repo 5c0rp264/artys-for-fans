@@ -9,53 +9,56 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Zod schema for form validation
+const MUSIC_GENRES = [
+  { value: 'pop',       label: { fr: 'Pop',         en: 'Pop',       es: 'Pop' } },
+  { value: 'hiphop',    label: { fr: 'Hip-Hop',      en: 'Hip-Hop',   es: 'Hip-Hop' } },
+  { value: 'rnb',       label: { fr: 'R&B / Soul',   en: 'R&B / Soul',es: 'R&B / Soul' } },
+  { value: 'electro',   label: { fr: 'Électro',      en: 'Electronic',es: 'Electrónico' } },
+  { value: 'rock',      label: { fr: 'Rock',         en: 'Rock',      es: 'Rock' } },
+  { value: 'indie',     label: { fr: 'Indie / Alternatif', en: 'Indie / Alternative', es: 'Indie / Alternativo' } },
+  { value: 'jazz',      label: { fr: 'Jazz / Blues', en: 'Jazz / Blues', es: 'Jazz / Blues' } },
+  { value: 'classique', label: { fr: 'Classique',    en: 'Classical', es: 'Clásica' } },
+  { value: 'afro',      label: { fr: 'Afro / World', en: 'Afro / World', es: 'Afro / World' } },
+  { value: 'metal',     label: { fr: 'Metal / Punk', en: 'Metal / Punk', es: 'Metal / Punk' } },
+  { value: 'reggae',    label: { fr: 'Reggae / Dancehall', en: 'Reggae / Dancehall', es: 'Reggae / Dancehall' } },
+  { value: 'other',     label: { fr: 'Autre',        en: 'Other',     es: 'Otro' } },
+];
+
 const formSchema = z.object({
-  name: z.string().min(1, 'Requis'),
-  email: z.string().email('Email invalide'),
+  email:  z.string().email('Email invalide'),
+  genre:  z.string().min(1, 'Requis'),
   artist: z.string().optional(),
 });
-
 type FormData = z.infer<typeof formSchema>;
 
 export default function CTASection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language.slice(0, 2) as 'fr' | 'en' | 'es';
   const containerRef = useRef<HTMLElement>(null);
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading,   setLoading]   = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
   useGSAP(() => {
-    const animElements = containerRef.current?.querySelectorAll('[data-anim]');
-    animElements?.forEach((el) => {
-      gsap.fromTo(el,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1, y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 87%', once: true },
-        }
-      );
+    containerRef.current?.querySelectorAll('[data-anim]').forEach(el => {
+      gsap.fromTo(el, { opacity: 0, y: 40 }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 87%', once: true },
+      });
     });
   }, { scope: containerRef });
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      // Simulate API call — to wire to backend/Supabase/Resend
-      await new Promise(resolve => setTimeout(resolve, 800));
-      console.log('Waitlist signup:', data);
+      await new Promise(r => setTimeout(r, 800));
+      console.log('Fan waitlist signup:', data);
       setSubmitted(true);
     } catch (err) {
-      console.error('Form submission error:', err);
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -68,7 +71,7 @@ export default function CTASection() {
       <div className="container">
         <div className="cta-inner">
 
-          {/* Text side */}
+          {/* Texte */}
           <div className="cta-text" data-anim>
             <span className="eyebrow">{t('cta_section.eyebrow')}</span>
             <h2>
@@ -77,86 +80,71 @@ export default function CTASection() {
               {t('cta_section.title_end')}
             </h2>
             <p>{t('cta_section.subtitle')}</p>
-
             <div className="cta-buttons">
-              <button
-                className="btn-primary"
-                onClick={() => document.querySelector('.cta-form form')?.dispatchEvent(new Event('focus'))}
-                aria-label={t('cta_section.cta_primary')}
-              >
-                {t('cta_section.cta_primary')}
-              </button>
-              <a
-                href="mailto:hello@artysmusic.com"
-                className="btn-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="mailto:hello@artysmusic.com" className="btn-secondary" target="_blank" rel="noopener noreferrer">
                 {t('cta_section.cta_secondary')}
               </a>
             </div>
-
             <p className="cta-note">{t('cta_section.note')}</p>
           </div>
 
-          {/* Form side */}
+          {/* Formulaire */}
           <div data-anim>
             <div className="cta-form">
               {!submitted ? (
-                <form onSubmit={handleSubmit(onSubmit)} noValidate aria-label="Formulaire d'inscription">
-                  <div className="form-group">
-                    <label className="form-label" htmlFor="name">
-                      {t('cta_section.field_name_label')}
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      className={`form-input${errors.name ? ' error' : ''}`}
-                      placeholder={t('cta_section.field_name_placeholder')}
-                      autoComplete="given-name"
-                      {...register('name')}
-                    />
-                    {errors.name && (
-                      <span className="form-error" role="alert">{errors.name.message}</span>
-                    )}
-                  </div>
+                <form onSubmit={handleSubmit(onSubmit)} noValidate>
 
+                  {/* Email */}
                   <div className="form-group">
                     <label className="form-label" htmlFor="email">
                       {t('cta_section.field_email_label')}
                     </label>
                     <input
-                      id="email"
-                      type="email"
+                      id="email" type="email"
                       className={`form-input${errors.email ? ' error' : ''}`}
                       placeholder={t('cta_section.field_email_placeholder')}
                       autoComplete="email"
                       {...register('email')}
                     />
-                    {errors.email && (
-                      <span className="form-error" role="alert">{errors.email.message}</span>
-                    )}
+                    {errors.email && <span className="form-error" role="alert">{errors.email.message}</span>}
                   </div>
 
+                  {/* Genre musical */}
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="genre">
+                      {t('cta_section.field_genre_label')}
+                    </label>
+                    <select
+                      id="genre"
+                      className={`form-input${errors.genre ? ' error' : ''}`}
+                      {...register('genre')}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <option value="">{t('cta_section.field_genre_placeholder')}</option>
+                      {MUSIC_GENRES.map(g => (
+                        <option key={g.value} value={g.value}>
+                          {g.label[lang] || g.label.fr}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.genre && <span className="form-error" role="alert">{errors.genre.message}</span>}
+                  </div>
+
+                  {/* Artiste favori */}
                   <div className="form-group">
                     <label className="form-label" htmlFor="artist">
                       {t('cta_section.field_artist_label')}
                     </label>
                     <input
-                      id="artist"
-                      type="text"
+                      id="artist" type="text"
                       className="form-input"
                       placeholder={t('cta_section.field_artist_placeholder')}
                       {...register('artist')}
                     />
+                    <span className="form-hint">{t('cta_section.field_artist_hint')}</span>
                   </div>
 
-                  <button
-                    type="submit"
-                    className="form-submit-btn"
-                    disabled={loading}
-                    aria-label={t('cta_section.form_submit')}
-                  >
+                  <button type="submit" className="form-submit-btn" disabled={loading}>
                     {loading ? '...' : t('cta_section.form_submit')}
                   </button>
 
