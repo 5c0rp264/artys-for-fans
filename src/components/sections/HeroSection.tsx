@@ -98,6 +98,11 @@ export default function HeroSection() {
               {t('hero.badge')}
             </div>
 
+            {/* Live Ticker — juste sous le badge */}
+            <div ref={tickerRef} style={{ opacity: 0, marginBottom: '24px' }}>
+              <ArtysTicker />
+            </div>
+
             {/* Title — H1 deux lignes */}
             <h1 ref={titleRef} className="hero-title" style={{ perspective: '800px' }}>
               {/* Ligne 1 : "La musique que tu aimes" */}
@@ -134,11 +139,6 @@ export default function HeroSection() {
               <button className="btn-secondary" onClick={() => scrollTo('echo')}>
                 {t('hero.cta_secondary')}
               </button>
-            </div>
-
-            {/* Live Ticker */}
-            <div ref={tickerRef} style={{ opacity: 0 }}>
-              <ArtysTicker />
             </div>
 
           </div>
