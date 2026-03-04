@@ -1,0 +1,22 @@
+DirectoryIndex index.html
+
+Options -MultiViews
+
+RewriteEngine On
+
+# CORS for static assets
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|css|js|woff2?|ttf|eot)$">
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+  </FilesMatch>
+</IfModule>
+
+# Serve existing files and directories as-is
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# SPA catch-all: everything else -> index.html
+RewriteRule ^ index.html [QSA,L]
