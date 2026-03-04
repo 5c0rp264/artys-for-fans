@@ -419,7 +419,7 @@ function EchoTerminal() {
   );
 }
 
-// ─── 3 Features avec mini-orb ─────────────────────────────────────────────────
+// ─── 3 Features avec mini-orb (bloc jaune) ────────────────────────────────────
 function EchoFeatures() {
   const features = [
     {
@@ -437,9 +437,9 @@ function EchoFeatures() {
   ];
 
   return (
-    <div className="echo-features-col">
+    <div className="echo-features-3col">
       {features.map((feat, i) => (
-        <div key={i} className="echo-feature-item" data-anim>
+        <div key={i} className="echo-feature-card">
           {/* Mini orb pulsante jaune */}
           <div className="echo-mini-orb-wrap" aria-hidden="true">
             <div className="echo-mini-orb-ring echo-mini-orb-ring-2" />
@@ -490,17 +490,14 @@ export default function EchoSection() {
           <p className="echo-section-sub" data-anim>{t('echo.subtitle')}</p>
         </div>
 
-        {/* Layout 2 colonnes : terminal ECHO à gauche, 3 features à droite */}
-        <div className="echo-main-grid" data-anim>
-
-          {/* Colonne gauche — terminal chat interactif */}
-          <div className="echo-chat-col">
-            <EchoTerminal />
-          </div>
-
-          {/* Colonne droite — 3 features avec mini-orb */}
+        {/* Bloc jaune features */}
+        <div className="echo-features-block" data-anim>
           <EchoFeatures />
+        </div>
 
+        {/* Terminal ECHO pleine largeur */}
+        <div className="echo-terminal-wrap" data-anim>
+          <EchoTerminal />
         </div>
 
       </div>

@@ -1631,11 +1631,11 @@ h1.hero-title {
 
 /* ── Terminal wrap pleine largeur ────────────────────────── */
 .echo-terminal-wrap {
-  max-width: 860px;
+  max-width: 100%;
   margin: 0 auto 48px;
 }
 
-/* ── Layout 2 colonnes ECHO ──────────────────────────────── */
+/* ── Legacy grid (conservé pour compatibilité) ───────────── */
 .echo-main-grid {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -1643,15 +1643,60 @@ h1.hero-title {
   align-items: start;
   margin-top: 48px;
 }
-.echo-phone-col {
-  position: sticky;
-  top: 100px;
-}
-.echo-chat-col {
-  min-width: 0;
+.echo-phone-col { position: sticky; top: 100px; }
+.echo-chat-col  { min-width: 0; }
+
+/* ── Bloc jaune 3 features (nouveau layout) ──────────────── */
+.echo-features-block {
+  margin-bottom: 40px;
 }
 
-/* ── Echo features col ───────────────────────────────────── */
+/* Conteneur carte jaune globale */
+.echo-features-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: rgba(255, 239, 71, 0.06);
+  border: 1.5px solid rgba(255, 239, 71, 0.35);
+  border-radius: 18px;
+  padding: 36px 40px;
+  position: relative;
+  overflow: hidden;
+}
+/* Accent barre gauche jaune */
+.echo-features-3col::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ffef47, #ffd000);
+  border-radius: 18px 0 0 18px;
+}
+
+/* Séparateur vertical entre cards */
+.echo-feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 0 32px;
+  position: relative;
+}
+.echo-feature-card:first-child {
+  padding-left: 20px;
+}
+.echo-feature-card:last-child {
+  padding-right: 0;
+}
+/* Ligne séparatrice */
+.echo-feature-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 10%; bottom: 10%;
+  width: 1px;
+  background: rgba(255, 239, 71, 0.2);
+}
+
+/* ── Echo features col (fallback vertical) ───────────────── */
 .echo-features-col {
   display: flex;
   flex-direction: column;
@@ -2070,6 +2115,22 @@ h1.hero-title {
     position: static;
     display: flex;
     justify-content: center;
+  }
+  /* Bloc features : 1 colonne sur mobile */
+  .echo-features-3col {
+    grid-template-columns: 1fr;
+    padding: 28px 24px;
+    gap: 28px;
+  }
+  .echo-feature-card {
+    padding: 0;
+  }
+  .echo-feature-card:not(:last-child)::after {
+    display: none;
+  }
+  .echo-feature-card:not(:last-child) {
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,239,71,0.15);
   }
 }
 
