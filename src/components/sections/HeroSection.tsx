@@ -98,24 +98,26 @@ export default function HeroSection() {
               {t('hero.badge')}
             </div>
 
-            {/* Title */}
-            <div ref={titleRef} className="hero-title" style={{ perspective: '800px' }}>
-              <span className="word">{t('hero.title_1')}</span>
-              {' '}
-              <span className="word">{t('hero.title_2')}</span>
-              {' '}
-              <br className="line-break" />
-              <span className="word hero-underline-wrap" style={{ color: 'var(--accent)' }}>
-                {t('hero.title_highlight')}
-                <svg className="hero-underline-svg" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
-                  <path ref={underlinePath}
-                    d="M4 8 Q75 2 150 6 Q225 10 296 4"
-                    strokeDasharray="400" strokeDashoffset="400" />
-                </svg>
+            {/* Title — H1 deux lignes */}
+            <h1 ref={titleRef} className="hero-title" style={{ perspective: '800px' }}>
+              {/* Ligne 1 : "La musique que tu aimes" */}
+              <span className="hero-title-line">
+                <span className="word">{t('hero.title_1')}</span>
               </span>
-              {' '}
-              <span className="word">{t('hero.title_3')}</span>
-            </div>
+              {/* Ligne 2 : "mérite mieux. Toi aussi." */}
+              <span className="hero-title-line">
+                <span className="word hero-underline-wrap" style={{ color: 'var(--accent)' }}>
+                  {t('hero.title_highlight')}
+                  <svg className="hero-underline-svg" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
+                    <path ref={underlinePath}
+                      d="M4 8 Q75 2 150 6 Q225 10 296 4"
+                      strokeDasharray="400" strokeDashoffset="400" />
+                  </svg>
+                </span>
+                {' '}
+                <span className="word">{t('hero.title_3')}</span>
+              </span>
+            </h1>
 
             {/* Subtitle */}
             <p ref={subtitleRef} className="hero-subtitle" style={{ opacity: 0 }}>
