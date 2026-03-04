@@ -59,13 +59,11 @@ export default function Navbar() {
         <div className="container navbar-inner">
           {/* Logo */}
           <a href="/" className="navbar-logo" aria-label="Artys Music">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="#00e5b0" />
-              <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle"
-                fill="#000" fontFamily="Jost, sans-serif" fontWeight="900"
-                fontSize="14" letterSpacing="1">A</text>
-            </svg>
-            <span className="navbar-logo-text">Artys</span>
+            <img
+              src="/artys-logo.png"
+              alt="Artys Music"
+              className="navbar-logo-img"
+            />
           </a>
 
           {/* Toggle Fans / Artistes */}

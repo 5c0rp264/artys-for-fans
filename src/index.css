@@ -253,6 +253,12 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
   width: 32px;
   height: 32px;
 }
+.navbar-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
 .navbar-logo-text {
   font-family: var(--font-title);
   font-weight: 900;
