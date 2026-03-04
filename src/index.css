@@ -2730,26 +2730,41 @@ h1.hero-title {
   font-weight: 300;
 }
 .fair-pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 3vw, 28px);
-}
-.fair-pillar-card {
-  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 720px;
+  margin: 0 auto;
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 28px;
-  text-align: center;
-  transition: border-color var(--transition), transform var(--transition);
+  border-radius: 20px;
+  overflow: hidden;
 }
-.fair-pillar-card:hover {
-  border-color: var(--accent-border);
-  transform: translateY(-4px);
+.fair-pillar-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 28px 36px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
 }
-.fair-pillar-icon {
-  font-size: 2rem;
-  margin-bottom: 16px;
-  display: block;
+.fair-pillar-row:last-child {
+  border-bottom: none;
+}
+.fair-pillar-row:hover {
+  background: rgba(0,229,176,0.04);
+}
+.fair-pillar-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  padding-top: 3px;
+  min-width: 24px;
+  opacity: 0.7;
+}
+.fair-pillar-body {
+  flex: 1;
 }
 .fair-pillar-title {
   font-family: var(--font-title);
@@ -2758,12 +2773,13 @@ h1.hero-title {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 .fair-pillar-desc {
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.65;
+  margin: 0;
 }
 
 /* ============================================================
@@ -2927,7 +2943,7 @@ select.form-input option {
   .echo-phone-outer  { display: none; }
   .backstage-compare { grid-template-columns: 1fr; gap: 16px; }
   .backstage-vs      { display: none; }
-  .fair-pillars      { grid-template-columns: 1fr; }
+  .fair-pillar-row   { padding: 22px 20px; gap: 18px; }
   .fair-comparison-block { flex-direction: column; align-items: stretch; }
   .fair-arrow        { transform: rotate(90deg); align-self: center; }
   .social-story-card { grid-template-columns: 1fr; }

@@ -20,16 +20,16 @@ export default function FairSection() {
   }, { scope: containerRef });
 
   const pillars = [
-    { icon: '🎵', titleKey: 'fair.pillar1_title', descKey: 'fair.pillar1_desc' },
-    { icon: '🔍', titleKey: 'fair.pillar2_title', descKey: 'fair.pillar2_desc' },
-    { icon: '🗳',  titleKey: 'fair.pillar3_title', descKey: 'fair.pillar3_desc' },
+    { num: '01', titleKey: 'fair.pillar1_title', descKey: 'fair.pillar1_desc' },
+    { num: '02', titleKey: 'fair.pillar2_title', descKey: 'fair.pillar2_desc' },
+    { num: '03', titleKey: 'fair.pillar3_title', descKey: 'fair.pillar3_desc' },
   ];
 
   return (
     <section className="fair-section" ref={containerRef} id="fair">
       <div className="container">
 
-        {/* Headline minimaliste */}
+        {/* Headline + comparaison */}
         <div className="fair-headline" data-anim>
           <div className="section-badge" style={{ justifyContent: 'center' }}>
             <span>⚖️</span>
@@ -46,19 +46,23 @@ export default function FairSection() {
             <div className="fair-platform fair-platform-accent">
               <span className="fair-platform-name" style={{ color: 'var(--accent)' }}>Artys</span>
               <span className="fair-stream-value">
-                {t('fair.artys_value')}
+                Ton abonnement = l'équivalent de{' '}
+                <strong style={{ color: 'var(--accent)' }}>1 000 streams</strong>{' '}
+                chaque mois
               </span>
             </div>
           </div>
         </div>
 
-        {/* Trois pilliers */}
+        {/* Trois pilliers — style manifeste */}
         <div className="fair-pillars" data-anim>
           {pillars.map((p, i) => (
-            <div key={i} className="fair-pillar-card">
-              <div className="fair-pillar-icon" aria-hidden="true">{p.icon}</div>
-              <h4 className="fair-pillar-title">{t(p.titleKey)}</h4>
-              <p className="fair-pillar-desc">{t(p.descKey)}</p>
+            <div key={i} className="fair-pillar-row">
+              <span className="fair-pillar-num">{p.num}</span>
+              <div className="fair-pillar-body">
+                <h4 className="fair-pillar-title">{t(p.titleKey)}</h4>
+                <p className="fair-pillar-desc">{t(p.descKey)}</p>
+              </div>
             </div>
           ))}
         </div>
