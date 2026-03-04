@@ -2607,8 +2607,8 @@ h1.hero-title {
   transition: border-color var(--transition);
 }
 .referral-row-highlight {
-  border-color: rgba(255,86,87,0.35);
-  background: rgba(255,86,87,0.04);
+  border-color: rgba(253,224,103,0.35);
+  background: rgba(253,224,103,0.04);
 }
 .referral-row-header {
   display: flex;
@@ -2638,7 +2638,7 @@ h1.hero-title {
 }
 .referral-row-highlight .referral-reward {
   font-size: 1rem;
-  color: #FF5657;
+  color: #fde067;
 }
 .referral-progress-bg {
   height: 4px;
@@ -2653,8 +2653,8 @@ h1.hero-title {
   transition: width 0.3s ease;
 }
 .referral-progress-accent {
-  background: #FF5657;
-  box-shadow: 0 0 8px rgba(255,86,87,0.45);
+  background: #fde067;
+  box-shadow: 0 0 8px rgba(253,224,103,0.45);
 }
 
 .referral-reassurance {
