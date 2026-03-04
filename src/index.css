@@ -1007,9 +1007,10 @@ h1.hero-title {
   border: 1px solid var(--border);
   border-radius: 20px;
 }
-.ark-logo-svg {
+.ark-logo-img {
   width: 160px;
   height: 160px;
+  object-fit: contain;
 }
 @keyframes arkOrbit {
   from { transform: rotate(0deg); }
@@ -1433,7 +1434,7 @@ h1.hero-title {
   .governance-right {
     order: -1;
   }
-  .ark-logo-svg {
+  .ark-logo-img {
     width: 120px;
     height: 120px;
   }
@@ -2604,8 +2605,8 @@ h1.hero-title {
   transition: border-color var(--transition);
 }
 .referral-row-highlight {
-  border-color: rgba(255,224,102,0.35);
-  background: rgba(255,224,102,0.04);
+  border-color: rgba(255,86,87,0.35);
+  background: rgba(255,86,87,0.04);
 }
 .referral-row-header {
   display: flex;
@@ -2635,7 +2636,7 @@ h1.hero-title {
 }
 .referral-row-highlight .referral-reward {
   font-size: 1rem;
-  color: var(--accent-yellow);
+  color: #FF5657;
 }
 .referral-progress-bg {
   height: 4px;
@@ -2650,8 +2651,8 @@ h1.hero-title {
   transition: width 0.3s ease;
 }
 .referral-progress-accent {
-  background: var(--accent-yellow);
-  box-shadow: 0 0 8px rgba(255,224,102,0.45);
+  background: #FF5657;
+  box-shadow: 0 0 8px rgba(255,86,87,0.45);
 }
 
 .referral-reassurance {
