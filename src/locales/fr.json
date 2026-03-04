@@ -93,14 +93,14 @@
   },
   "social": {
     "tag": "Preuve sociale",
-    "title": "Ce n'est pas du streaming. C'est une",
-    "title_highlight": " relation.",
+    "title": "Ce n'est pas du streaming.",
+    "title_highlight": " C'est une relation.",
     "fan_since": "Fan de Lucas depuis 3 ans",
     "story_text": "Sarah a rejoint la Guilde de Lucas il y a 6 mois. Elle a partagé son EP, invité 3 amis, voté pour son artwork. Ce mois, elle a gagné <strong>15€ de Royaltips</strong>. Lucas a financé son prochain clip grâce à sa Guilde.",
     "stat1_label": "Royaltips ce mois",
     "stat2_label": "Fan de Lucas",
     "stat3_label": "Clip financé",
-    "quote": "Ce n'est pas du streaming. C'est une relation."
+    "quote": "Ce n'est plus du business, c'est une association."
   },
   "governance": {
     "tag": "Gouvernance",
