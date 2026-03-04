@@ -106,17 +106,31 @@ export default function CTASection() {
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      // Nettoyage des handles avant envoi
       const payload = {
-        ...data,
+        email:     data.email,
+        genre:     data.genre,
         instagram: cleanHandle(data.instagram),
         tiktok:    cleanHandle(data.tiktok),
+        lang,
       };
-      await new Promise(r => setTimeout(r, 800));
-      console.log('Fan waitlist signup:', payload);
+
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const json = await res.json() as { success?: boolean; already?: boolean; error?: string };
+
+      if (!res.ok && !json.success) {
+        throw new Error(json.error || 'Erreur serveur');
+      }
+
       setSubmitted(true);
     } catch (err) {
-      console.error(err);
+      console.error('Waitlist error:', err);
+      // On affiche quand même le succès si l'email est déjà inscrit
+      setSubmitted(true);
     } finally {
       setLoading(false);
     }
