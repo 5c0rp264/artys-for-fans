@@ -42,7 +42,7 @@ export default function Navbar() {
   }, []);
 
   const handleArtistsClick = () => {
-    window.open('https://artists.artysmusic.com', '_blank', 'noopener');
+    window.location.href = 'https://artists.artysmusic.com';
   };
 
   const scrollToSection = (id: string) => {
