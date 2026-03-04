@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import EchoPhoneLive from '../ui/EchoPhoneLive';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -460,11 +461,20 @@ export default function EchoSection() {
           <p className="echo-section-sub" data-anim>{t('echo.subtitle')}</p>
         </div>
 
-        {/* Terminal pleine largeur */}
-        <div className="echo-terminal-wrap" data-anim>
-          <EchoTerminal />
-        </div>
+        {/* Layout 2 colonnes : phone à gauche, chat à droite */}
+        <div className="echo-main-grid" data-anim>
 
+          {/* Colonne gauche — phone mockup live */}
+          <div className="echo-phone-col">
+            <EchoPhoneLive />
+          </div>
+
+          {/* Colonne droite — terminal chat */}
+          <div className="echo-chat-col">
+            <EchoTerminal />
+          </div>
+
+        </div>
 
       </div>
     </section>
