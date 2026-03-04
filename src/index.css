@@ -1636,16 +1636,471 @@ h1.hero-title {
 .echo-section::before { top: 0; }
 .echo-section::after  { bottom: 0; }
 
-/* Grid ECHO */
-.echo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 64px);
-  align-items: center;
-  margin-top: 56px;
+/* ── Section header ──────────────────────────────────────── */
+.echo-section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+.echo-section-sub {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 16px auto 0;
+  max-width: 560px;
 }
 
-/* ── Phone Mockup ─────────────────────────────────────────── */
+/* ── Terminal wrap pleine largeur ────────────────────────── */
+.echo-terminal-wrap {
+  max-width: 860px;
+  margin: 0 auto 48px;
+}
+
+/* ── Pilliers sous terminal ──────────────────────────────── */
+.echo-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 32px);
+  max-width: 860px;
+  margin: 0 auto;
+}
+.echo-pillar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(20px, 3vw, 28px);
+  text-align: center;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.echo-pillar:hover {
+  border-color: rgba(0,229,176,0.3);
+  box-shadow: 0 0 24px rgba(0,229,176,0.06);
+}
+.echo-pillar-icon {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.echo-pillar strong {
+  display: block;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.echo-pillar p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Le terminal EchoVisual ──────────────────────────────── */
+.ev-terminal {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0a100e 0%, #060c0a 55%, #030806 100%);
+  border: 1px solid rgba(0,229,176,0.18);
+  box-shadow:
+    0 0 80px rgba(0,229,176,0.07),
+    0 0 160px rgba(0,229,176,0.03),
+    inset 0 1px 0 rgba(0,229,176,0.12);
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+}
+
+/* Halos */
+.ev-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ev-glow-1 {
+  top: -100px; left: -100px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(0,229,176,0.1) 0%, transparent 70%);
+  animation: evPulse 5s ease-in-out infinite;
+}
+.ev-glow-2 {
+  bottom: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,229,176,0.06) 0%, transparent 70%);
+  animation: evPulse 5s ease-in-out 2.5s infinite;
+}
+@keyframes evPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.18); }
+}
+
+/* Particles */
+.ev-particles {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden;
+  z-index: 0;
+}
+.ev-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #00E5B0;
+  animation: evFloat linear infinite;
+}
+@keyframes evFloat {
+  0%   { transform: translateY(0)    scale(1);   opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-110px) scale(0.4); opacity: 0; }
+}
+
+/* Scanlines */
+.ev-scanlines {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 1;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px
+  );
+}
+
+/* Header terminal */
+.ev-header {
+  position: relative; z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0,229,176,0.12);
+  background: rgba(0,229,176,0.03);
+  flex-shrink: 0;
+}
+.ev-dots {
+  display: flex; gap: 7px;
+}
+.ev-dot {
+  width: 11px; height: 11px;
+  border-radius: 50%; display: block;
+}
+.ev-header-title {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(0,229,176,0.7);
+  letter-spacing: 0.06em;
+}
+.ev-status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #00E5B0;
+  animation: evStatusBlink 2s ease-in-out infinite;
+}
+@keyframes evStatusBlink {
+  0%,100% { opacity: 1; box-shadow: 0 0 6px #00E5B0; }
+  50%     { opacity: 0.35; box-shadow: none; }
+}
+.ev-header-badge {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(0,229,176,0.6);
+  background: rgba(0,229,176,0.08);
+  border: 1px solid rgba(0,229,176,0.2);
+  padding: 3px 9px;
+  border-radius: 100px;
+}
+
+/* Corps messages */
+.ev-body {
+  position: relative; z-index: 3;
+  flex: 1; min-height: 280px; max-height: 380px;
+  overflow-y: auto;
+  padding: 20px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,229,176,0.15) transparent;
+}
+.ev-body::-webkit-scrollbar { width: 3px; }
+.ev-body::-webkit-scrollbar-thumb { background: rgba(0,229,176,0.2); border-radius: 2px; }
+
+/* Messages */
+.ev-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: evMsgIn 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.ev-msg-user { flex-direction: row-reverse; }
+@keyframes evMsgIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Avatar ECHO */
+.ev-avatar {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0,229,176,0.25), rgba(0,229,176,0.1));
+  border: 1px solid rgba(0,229,176,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; margin-top: 2px;
+}
+.ev-user-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+}
+.ev-user-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+}
+
+/* Bulle */
+.ev-bubble {
+  max-width: 78%;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  border-radius: 16px;
+}
+.ev-msg-assistant .ev-bubble {
+  background: rgba(0,229,176,0.06);
+  border: 1px solid rgba(0,229,176,0.15);
+  border-radius: 4px 16px 16px 16px;
+  color: var(--text-dim);
+}
+.ev-msg-user .ev-bubble {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px 16px 4px 16px;
+  color: var(--text);
+  font-weight: 500;
+}
+.ev-bubble-text {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* Typing dots */
+.ev-typing {
+  display: flex; align-items: center; gap: 5px;
+  padding: 4px 0;
+}
+.ev-typing-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(0,229,176,0.7);
+  animation: evBounce 1.1s ease-in-out infinite;
+}
+@keyframes evBounce {
+  0%,80%,100% { transform: translateY(0); }
+  40%         { transform: translateY(-8px); }
+}
+
+/* Tracklist */
+.ev-tracklist {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ev-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.2s;
+  opacity: 0; transform: translateX(-10px);
+  cursor: default;
+}
+.ev-track-in {
+  opacity: 1; transform: translateX(0);
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s, border-color 0.2s;
+}
+.ev-track:hover {
+  background: rgba(0,229,176,0.06);
+  border-color: rgba(0,229,176,0.15);
+}
+.ev-track-artys {
+  border-color: rgba(0,229,176,0.12) !important;
+}
+.ev-track-artys:hover {
+  border-color: rgba(0,229,176,0.3) !important;
+  box-shadow: 0 0 12px rgba(0,229,176,0.08);
+}
+.ev-track-thumb {
+  width: 34px; height: 34px;
+  border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.ev-track-meta {
+  flex: 1; min-width: 0;
+}
+.ev-track-title {
+  display: block;
+  font-size: 12px; font-weight: 600;
+  color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ev-track-artist {
+  display: block; margin-top: 2px;
+  font-size: 11px; color: var(--text-secondary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  display: flex; align-items: center; gap: 5px;
+}
+.ev-artys-badge {
+  font-family: var(--font-title);
+  font-size: 8px; font-weight: 900;
+  background: rgba(0,229,176,0.15);
+  color: var(--accent);
+  border: 1px solid rgba(0,229,176,0.3);
+  padding: 1px 5px; border-radius: 4px;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.ev-track-dur {
+  font-family: var(--font-mono);
+  font-size: 10px; color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+/* Waveform mini sur thumb */
+.ev-wf {
+  display: flex; align-items: flex-end; gap: 2px;
+  height: 18px; padding: 0 4px;
+}
+.ev-wf-bar {
+  width: 2.5px; border-radius: 2px;
+  background: rgba(255,255,255,0.25);
+  height: 30%;
+  transition: background 0.2s;
+}
+.ev-wf-on .ev-wf-bar {
+  background: rgba(255,255,255,0.8);
+  animation: evBarDance 0.9s ease-in-out infinite alternate;
+}
+@keyframes evBarDance {
+  from { transform: scaleY(0.3); }
+  to   { transform: scaleY(1);   }
+}
+
+/* Suggestions */
+.ev-suggestions {
+  position: relative; z-index: 3;
+  padding: 0 20px 14px;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.ev-suggestion {
+  background: transparent;
+  border: 1px solid rgba(0,229,176,0.2);
+  color: rgba(0,229,176,0.7);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.ev-suggestion:hover {
+  background: rgba(0,229,176,0.1);
+  border-color: rgba(0,229,176,0.45);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Footer input */
+.ev-footer {
+  position: relative; z-index: 3;
+  border-top: 1px solid rgba(0,229,176,0.1);
+  background: rgba(0,0,0,0.25);
+  padding: 12px 20px 16px;
+  flex-shrink: 0;
+}
+.ev-input-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.ev-mic {
+  font-size: 1.1rem; flex-shrink: 0;
+  opacity: 0.4; transition: opacity 0.3s;
+}
+.ev-mic-active {
+  opacity: 1;
+  animation: evMicPulse 1.5s ease-in-out infinite;
+}
+@keyframes evMicPulse {
+  0%,100% { opacity: 1;   }
+  50%     { opacity: 0.5; }
+}
+.ev-input {
+  flex: 1;
+  background: transparent;
+  border: none; outline: none;
+  color: var(--text);
+  font-size: 13px; font-family: var(--font-body);
+  caret-color: var(--accent);
+  padding: 6px 0;
+}
+.ev-input::placeholder { color: rgba(255,255,255,0.22); }
+.ev-input:disabled { opacity: 0.5; }
+.ev-send {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.25);
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: default; transition: all 0.2s; flex-shrink: 0;
+}
+.ev-send-active {
+  background: var(--accent) !important;
+  border-color: transparent !important;
+  color: #000 !important;
+  cursor: pointer;
+}
+.ev-send-active:hover {
+  background: #00ffca !important;
+  transform: scale(1.06);
+}
+.ev-spinner {
+  display: block; width: 14px; height: 14px;
+  border: 2px solid rgba(0,229,176,0.25);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: evSpin 0.75s linear infinite;
+}
+@keyframes evSpin { to { transform: rotate(360deg); } }
+
+.ev-footer-note {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: rgba(0,229,176,0.35);
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .echo-pillars { grid-template-columns: 1fr; }
+  .ev-terminal  { min-height: 460px; }
+  .ev-body      { max-height: 300px; }
+}
+
+/* ── Phone Mockup (legacy, conservé pour compatibilité) ── */
 .echo-phone-outer {
   display: flex;
   justify-content: center;
