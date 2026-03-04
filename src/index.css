@@ -1474,6 +1474,20 @@ h1.hero-title {
   }
 }
 
+/* Toggle dans le menu mobile hamburger */
+.mobile-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 20px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.nav-toggle-mobile {
+  display: flex !important;
+  transform: scale(1.15);
+  transform-origin: center;
+}
+
 @media (max-width: 480px) {
   .comparison-table-wrap {
     font-size: 0.8rem;
