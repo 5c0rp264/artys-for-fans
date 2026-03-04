@@ -1651,6 +1651,83 @@ h1.hero-title {
   min-width: 0;
 }
 
+/* ── Echo features col ───────────────────────────────────── */
+.echo-features-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+.echo-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+/* Mini orb */
+.echo-mini-orb-wrap {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.echo-mini-orb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffef47, #ffd000);
+  box-shadow:
+    0 0 8px rgba(255,239,71,0.7),
+    0 0 18px rgba(255,239,71,0.3);
+  animation: miniOrbPulse 2.4s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+.echo-mini-orb-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,239,71,0.4);
+  animation: miniRingPulse 2.4s ease-out infinite;
+}
+.echo-mini-orb-ring-1 {
+  width: 22px;
+  height: 22px;
+  animation-delay: 0s;
+}
+.echo-mini-orb-ring-2 {
+  width: 30px;
+  height: 30px;
+  animation-delay: 0.6s;
+  opacity: 0.5;
+}
+@keyframes miniOrbPulse {
+  0%,100% { transform: scale(1);    box-shadow: 0 0 8px rgba(255,239,71,0.7), 0 0 18px rgba(255,239,71,0.3); }
+  50%      { transform: scale(1.12); box-shadow: 0 0 14px rgba(255,239,71,0.9), 0 0 28px rgba(255,239,71,0.5); }
+}
+@keyframes miniRingPulse {
+  0%   { transform: scale(0.7);  opacity: 0.5; }
+  100% { transform: scale(1.6);  opacity: 0; }
+}
+/* Texte feature */
+.echo-feature-body { flex: 1; }
+.echo-feature-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.echo-feature-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
 /* ── Phone mockup live ───────────────────────────────────── */
 .epl-phone-outer {
   display: flex;

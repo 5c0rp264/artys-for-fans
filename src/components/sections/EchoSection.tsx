@@ -461,7 +461,7 @@ export default function EchoSection() {
           <p className="echo-section-sub" data-anim>{t('echo.subtitle')}</p>
         </div>
 
-        {/* Layout 2 colonnes : phone à gauche, chat à droite */}
+        {/* Layout 2 colonnes : phone à gauche, features à droite */}
         <div className="echo-main-grid" data-anim>
 
           {/* Colonne gauche — phone mockup live */}
@@ -469,10 +469,38 @@ export default function EchoSection() {
             <EchoPhoneLive />
           </div>
 
-          {/* Colonne droite — terminal chat */}
-          <div className="echo-chat-col">
-            <EchoTerminal />
+          {/* Colonne droite — 3 features */}
+          <div className="echo-chat-col echo-features-col">
+            {[
+              {
+                title: 'Recommandations Intelligentes',
+                desc: 'ECHO analyse vos goûts musicaux pour créer des playlists personnalisées qui évoluent avec vos préférences.',
+              },
+              {
+                title: 'Conversation Naturelle',
+                desc: 'Demandez simplement à ECHO de trouver la musique parfaite pour votre moment. Elle comprend et répond naturellement.',
+              },
+              {
+                title: 'Découverte Artistique',
+                desc: "ECHO vous fait découvrir des artistes émergents qui correspondent à votre style, tout en soutenant les créateurs.",
+              },
+            ].map((feat, i) => (
+              <div key={i} className="echo-feature-item" data-anim>
+                {/* Mini orb pulsante */}
+                <div className="echo-mini-orb-wrap">
+                  <div className="echo-mini-orb-ring echo-mini-orb-ring-2" />
+                  <div className="echo-mini-orb-ring echo-mini-orb-ring-1" />
+                  <div className="echo-mini-orb" />
+                </div>
+                <div className="echo-feature-body">
+                  <h4 className="echo-feature-title">{feat.title}</h4>
+                  <p className="echo-feature-desc">{feat.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
+
+        </div>
 
         </div>
 
