@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import ArtysTicker from '../ui/Ticker';
+import EchoPhoneLive from '../ui/EchoPhoneLive';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,14 +80,9 @@ export default function HeroSection() {
       <div className="container">
         <div className="hero-grid">
 
-          {/* ── Colonne gauche : GIF ── */}
+          {/* ── Colonne gauche : Phone mockup ECHO ── */}
           <div ref={gifRef} className="hero-gif-col" style={{ opacity: 0 }}>
-            <img
-              src="/hero-artys.gif"
-              alt="Artys Music — streaming équitable"
-              className="hero-gif"
-              draggable={false}
-            />
+            <EchoPhoneLive />
           </div>
 
           {/* ── Colonne droite : texte ── */}

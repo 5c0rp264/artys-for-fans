@@ -489,7 +489,7 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
   max-width: 900px;
 }
 
-/* ── Hero 2-colonnes : GIF gauche / texte droite ── */
+/* ── Hero 2-colonnes : phone mockup gauche / texte droite ── */
 .hero-grid {
   position: relative;
   z-index: 2;
@@ -503,9 +503,8 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
 
 .hero-gif-col {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
-  align-self: stretch;
 }
 
 .hero-gif {
@@ -1440,8 +1439,9 @@ h1.hero-title {
     gap: 32px;
   }
   .hero-gif-col {
-    order: 2;          /* GIF passe sous le texte sur mobile */
+    order: 2;          /* phone passe sous le texte sur mobile */
     align-self: auto;
+    justify-content: center;
   }
   .hero-gif {
     max-height: 320px;
