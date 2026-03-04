@@ -75,9 +75,17 @@ export default function CTASection() {
           <div className="cta-text" data-anim>
             <span className="eyebrow">{t('cta_section.eyebrow')}</span>
             <h2>
-              <span className="accent-text">{t('cta_section.title_highlight')}</span>
+              {/* Rejoins la : blanc */}
+              <span style={{ color: 'var(--text)' }}>Rejoins la </span>
+              {/* Première communauté : vert */}
+              <span className="accent-text">première communauté</span>
+              {/* musicale : blanc */}
+              <span style={{ color: 'var(--text)' }}> musicale</span>
               <br />
-              {t('cta_section.title_end')}
+              {/* qui te : blanc */}
+              <span style={{ color: 'var(--text)' }}>qui te </span>
+              {/* Rémunère : orange */}
+              <span style={{ color: '#FF5657' }}>Rémunère.</span>
             </h2>
             <p>{t('cta_section.subtitle')}</p>
             <div className="cta-buttons">
