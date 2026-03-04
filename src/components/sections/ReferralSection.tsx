@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import MiniOrb from '../ui/MiniOrb';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +61,7 @@ export default function ReferralSection() {
 
         <div className="section-title" data-anim style={{ textAlign: 'center' }}>
           <div className="section-badge" style={{ justifyContent: 'center' }}>
-            <span>🎁</span>
+            <MiniOrb size="sm" />
             {t('referral.tag')}
           </div>
           <h2 style={{ textAlign: 'center' }}>

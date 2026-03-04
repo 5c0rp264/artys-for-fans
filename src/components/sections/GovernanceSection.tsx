@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import MiniOrb from '../ui/MiniOrb';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,21 +42,21 @@ export default function GovernanceSection() {
       nameKey: 'governance.member1_name',
       descKey:  'governance.member1_desc',
       priceKey: 'governance.member1_price',
-      icon: '🎵',
+      icon: null,
       isFan: false,
     },
     {
       nameKey: 'governance.member2_name',
       descKey:  'governance.member2_desc',
       priceKey: 'governance.member2_price',
-      icon: '🏢',
+      icon: null,
       isFan: false,
     },
     {
       nameKey: 'governance.member3_name',
       descKey:  'governance.member3_desc',
       priceKey: 'governance.member3_price',
-      icon: '❤️',
+      icon: null,
       isFan: true,
     },
   ];
@@ -69,7 +70,7 @@ export default function GovernanceSection() {
           {/* ── Colonne gauche : texte ─────────────────────────── */}
           <div className="governance-text" data-anim>
             <div className="section-badge">
-              <span>🏛</span>
+              <MiniOrb size="sm" />
               {t('governance.tag')}
             </div>
             <h2 style={{ marginBottom: '24px' }}>
@@ -113,7 +114,7 @@ export default function GovernanceSection() {
               <div className="gov-pricing-rows">
                 {pricingTiers.map((tier, i) => (
                   <div key={i} className={`gov-pricing-row${tier.isFan ? ' gov-pricing-row-fan' : ''}`}>
-                    <span className="gov-tier-icon" aria-hidden="true">{tier.icon}</span>
+                    <MiniOrb size="sm" />
                     <div className="gov-tier-info">
                       <span className="gov-tier-name">{t(tier.nameKey)}</span>
                       <span className="gov-tier-desc">{t(tier.descKey)}</span>
