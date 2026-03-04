@@ -40,11 +40,11 @@ export default function HeroSection() {
       );
     }
 
-    // Underline SVG
+    // Underline SVG orange — se trace après les mots
     if (underlinePath.current) {
       gsap.fromTo(underlinePath.current,
-        { strokeDashoffset: 400 },
-        { strokeDashoffset: 0, duration: 0.8, ease: 'power2.inOut', delay: 1.4 }
+        { strokeDashoffset: 450 },
+        { strokeDashoffset: 0, duration: 1.0, ease: 'power2.inOut', delay: 1.5 }
       );
     }
 
@@ -106,16 +106,18 @@ export default function HeroSection() {
               </span>
               {/* Ligne 2 : "mérite mieux. Toi aussi." */}
               <span className="hero-title-line">
-                <span className="word hero-underline-wrap" style={{ color: 'var(--accent)' }}>
+                <span className="word" style={{ color: 'var(--accent)' }}>
                   {t('hero.title_highlight')}
-                  <svg className="hero-underline-svg" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
-                    <path ref={underlinePath}
-                      d="M4 8 Q75 2 150 6 Q225 10 296 4"
-                      strokeDasharray="400" strokeDashoffset="400" />
-                  </svg>
                 </span>
                 {' '}
-                <span className="word">{t('hero.title_3')}</span>
+                <span className="word hero-underline-wrap hero-underline-orange">
+                  {t('hero.title_3')}
+                  <svg className="hero-underline-svg" viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden="true">
+                    <path ref={underlinePath}
+                      d="M3 10 Q30 3 55 8 Q80 13 110 7 Q140 2 165 8 Q190 13 217 6"
+                      strokeDasharray="450" strokeDashoffset="450" />
+                  </svg>
+                </span>
               </span>
             </h1>
 
