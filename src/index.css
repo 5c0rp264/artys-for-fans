@@ -21,7 +21,7 @@
   --accent-border: rgba(255, 239, 71, 0.25);
   --accent-red:    #ff4d4d;
   --accent-yellow: #ffe066;
-  --toggle-color:  #fa5655;
+  --toggle-color:  #ffef47;
   --text:          #ffffff;
   --text-secondary:#9ca3af;
   --text-dim:      #D9D9D9;
@@ -272,8 +272,8 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
 .nav-toggle {
   display: flex;
   align-items: center;
-  background: rgba(250, 86, 85, 0.1);
-  border: 1px solid rgba(250, 86, 85, 0.2);
+  background: rgba(255, 239, 71, 0.1);
+  border: 1px solid rgba(255, 239, 71, 0.3);
   border-radius: 100px;
   padding: 3px;
   gap: 0;
@@ -298,8 +298,8 @@ h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
   color: #000;
 }
 .nav-toggle-btn.inactive {
-  color: var(--text);
-  opacity: 0.45;
+  color: #ffef47;
+  opacity: 0.55;
 }
 .nav-toggle-pill {
   position: absolute;
