@@ -19,42 +19,10 @@ export default function ProblemSection() {
           opacity: 1, y: 0,
           duration: 0.8,
           ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 87%',
-            once: true,
-          },
+          scrollTrigger: { trigger: el, start: 'top 87%', once: true },
         }
       );
     });
-
-    // Count-up animations
-    const cards = [
-      { selector: '[data-count="1"]', target: 0.004, prefix: '', suffix: ' $', decimals: 3 },
-      { selector: '[data-count="2"]', target: 82, prefix: '', suffix: ' %', decimals: 0 },
-    ];
-
-    cards.forEach(({ selector, target, prefix, suffix, decimals }) => {
-      const el = containerRef.current?.querySelector(selector);
-      if (!el) return;
-      const obj = { val: 0 };
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 85%',
-        once: true,
-        onEnter: () => {
-          gsap.to(obj, {
-            val: target,
-            duration: 2,
-            ease: 'power2.out',
-            onUpdate: () => {
-              (el as HTMLElement).textContent = `${prefix}${obj.val.toFixed(decimals)}${suffix}`;
-            },
-          });
-        },
-      });
-    });
-
   }, { scope: containerRef });
 
   const iaItems = [
@@ -68,13 +36,13 @@ export default function ProblemSection() {
     <section className="problem-section" ref={containerRef} id="problem">
       <div className="container">
 
-        {/* Header */}
-        <div data-anim>
-          <div className="section-badge">
+        {/* Header centré */}
+        <div className="problem-header" data-anim>
+          <div className="section-badge" style={{ justifyContent: 'center' }}>
             <span>⚡</span>
             {t('problem.tag')}
           </div>
-          <h2 style={{ marginBottom: '32px', maxWidth: '820px' }}>
+          <h2 className="problem-title">
             {t('problem.title')}
             {' '}
             <span className="accent-text" style={{ color: 'var(--accent-red)' }}>
@@ -82,46 +50,27 @@ export default function ProblemSection() {
             </span>
             {t('problem.title_end')}
           </h2>
+          <p className="problem-subtitle" data-anim
+            dangerouslySetInnerHTML={{ __html: t('problem.p1') }}
+          />
+          <p className="problem-subtitle" data-anim
+            dangerouslySetInnerHTML={{ __html: t('problem.p2') }}
+          />
         </div>
 
-        <div className="problem-grid">
-          {/* Left: text + cards */}
-          <div>
-            <div className="problem-text-block" data-anim>
-              <p dangerouslySetInnerHTML={{ __html: t('problem.p1') }} />
-              <p dangerouslySetInnerHTML={{ __html: t('problem.p2') }} />
-            </div>
-
-            <div className="problem-cards">
-              <div className="problem-card" data-anim>
-                <div className="problem-card-number" data-count="1">0,004 $</div>
-                <div className="problem-card-title">{t('problem.card1_title')}</div>
-                <div className="problem-card-desc">{t('problem.card1_desc')}</div>
-              </div>
-              <div className="problem-card" data-anim>
-                <div className="problem-card-number" data-count="2" style={{ color: 'var(--accent-red)' }}>82 %</div>
-                <div className="problem-card-title">{t('problem.card2_title')}</div>
-                <div className="problem-card-desc">{t('problem.card2_desc')}</div>
-              </div>
-              <div className="problem-card" data-anim>
-                <div className="problem-card-number" style={{ color: 'var(--accent-yellow)' }}>×2</div>
-                <div className="problem-card-title">{t('problem.card3_title')}</div>
-                <div className="problem-card-desc">{t('problem.card3_desc')}</div>
-              </div>
-            </div>
+        {/* Bloc IA centré */}
+        <div className="problem-ia-wrap" data-anim>
+          <div className="problem-ia-title">
+            {t('problem.ia_title')}
           </div>
-
-          {/* Right: IA block */}
-          <div data-anim>
-            <div className="ia-block">
-              <div className="ia-block-title">{t('problem.ia_title')}</div>
-              <ul className="ia-list" role="list">
-                {iaItems.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <ul className="problem-ia-list" role="list">
+            {iaItems.map((item, i) => (
+              <li key={i} className="problem-ia-item">
+                <span className="problem-ia-dot" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
       </div>
