@@ -92,13 +92,7 @@ export default function HeroSection() {
           {/* ── Colonne droite : texte ── */}
           <div className="hero-text-col">
 
-            {/* Badge */}
-            <div ref={badgeRef} className="section-badge" style={{ opacity: 0 }}>
-              <span>✦</span>
-              {t('hero.badge')}
-            </div>
-
-            {/* Live Ticker — juste sous le badge */}
+            {/* Live Ticker — premier élément visible */}
             <div ref={tickerRef} style={{ opacity: 0, marginBottom: '24px' }}>
               <ArtysTicker />
             </div>
