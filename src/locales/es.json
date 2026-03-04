@@ -131,12 +131,14 @@
     "field_name_placeholder": "Ej: Sophie, Karim, Luna…",
     "field_email_label": "Tu email",
     "field_email_placeholder": "tu@email.com",
-    "field_artist_label": "Tu artista favorito",
-    "field_artist_placeholder": "¿A quién quieres apoyar primero?",
+    "field_artist_label": "¿Qué artista te gustaría apoyar primero?",
     "form_submit": "Unirse a la lista de espera",
     "form_success_title": "¡Bienvenido/a a la comunidad!",
     "form_success_body": "Te contactaremos antes que nadie en el lanzamiento. Serás de los primeros fans en acceder a los Backstages — hasta pronto ✦",
-    "form_consent": "Al inscribirte, aceptas recibir noticias de Artys. Cero spam, baja en 1 clic."
+    "form_consent": "Al inscribirte, aceptas recibir noticias de Artys. Cero spam, baja en 1 clic.",
+    "field_artist_hint": "¡Pega el perfil de Instagram o TikTok del artista — conocido o independiente, no importa!",
+    "field_instagram_placeholder": "@nombre_artista",
+    "field_tiktok_placeholder": "@nombre_artista"
   },
   "footer": {
     "tagline": "La primera plataforma de streaming equitativa donde artistas y fans co-crean y co-ganan — gobernada por sus miembros.",

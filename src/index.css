@@ -3507,6 +3507,32 @@ select.form-input option {
   display: block;
 }
 
+/* ── Champs réseaux sociaux (Instagram / TikTok) ─────────── */
+.form-social-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.form-social-icon {
+  position: absolute;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.form-social-input {
+  padding-left: 42px !important;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+}
+.form-social-input:focus {
+  border-color: rgba(255,239,71,0.5) !important;
+  box-shadow: 0 0 0 3px rgba(255,239,71,0.08) !important;
+}
+
 /* ============================================================
    RESPONSIVE — nouvelles sections
    ============================================================ */

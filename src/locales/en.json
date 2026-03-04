@@ -137,12 +137,13 @@
     "field_genre_label": "What's your favorite music style?",
     "field_genre_placeholder": "— Select your genre —",
     "field_artist_label": "Which artist would you like to support first?",
-    "field_artist_placeholder": "Famous or not, it doesn't matter!",
-    "field_artist_hint": "Famous or not — they could join Artys.",
+    "field_artist_hint": "Paste the artist's Instagram or TikTok profile — known or independent, doesn't matter!",
     "form_submit": "Join the waitlist",
     "form_success_title": "Welcome to the community!",
     "form_success_body": "We'll reach out before everyone else at launch. See you soon in the Artys ecosystem ✦",
-    "form_consent": "By signing up, you agree to receive Artys news. Zero spam, unsubscribe in 1 click."
+    "form_consent": "By signing up, you agree to receive Artys news. Zero spam, unsubscribe in 1 click.",
+    "field_instagram_placeholder": "@artist_name",
+    "field_tiktok_placeholder": "@artist_name"
   },
   "footer": {
     "tagline": "The first fair streaming platform where artists and fans co-create and co-earn — governed by its members.",
