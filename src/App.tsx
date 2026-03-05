@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,7 +23,12 @@ export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const appRef = useRef<HTMLDivElement>(null);
 
-  // Force scroll to top on mount — désactive la restauration auto du navigateur
+  // Force scroll top — synchrone avant le premier paint
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Force scroll top — désactive la restauration auto du navigateur
   useEffect(() => {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
