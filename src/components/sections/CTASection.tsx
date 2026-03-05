@@ -155,12 +155,10 @@ export default function CTASection() {
               <span style={{ color: '#FF5657' }}>Rémunère.</span>
             </h2>
             <p>{t('cta_section.subtitle')}</p>
-            <div className="cta-buttons">
-              <a href="mailto:hello@artysmusic.com" className="btn-secondary" target="_blank" rel="noopener noreferrer">
-                {t('cta_section.cta_secondary')}
-              </a>
+            <div className="cta-note-block">
+              <p className="cta-note-label">{t('cta_section.note_label')}</p>
+              <p className="cta-note-text">{t('cta_section.note_text')}</p>
             </div>
-            <p className="cta-note">{t('cta_section.note')}</p>
           </div>
 
           {/* Formulaire */}
