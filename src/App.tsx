@@ -23,6 +23,14 @@ export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const appRef = useRef<HTMLDivElement>(null);
 
+  // Force scroll to top on mount — désactive la restauration auto du navigateur
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   // Scroll top button visibility
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 600);
