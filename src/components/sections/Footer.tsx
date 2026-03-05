@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="footer-brand">
             <div className="footer-logo">
               <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                <rect width="32" height="32" rx="8" fill="#00e5b0" />
+                <rect width="32" height="32" rx="8" fill="#ffef47" />
                 <text x="50%" y="54%" dominantBaseline="middle" textAnchor="middle"
                   fill="#000" fontFamily="Jost, sans-serif" fontWeight="900"
                   fontSize="14" letterSpacing="1">A</text>

@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import MiniOrb from '../ui/MiniOrb';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,7 +33,7 @@ export default function FairSection() {
         {/* Headline + comparaison */}
         <div className="fair-headline" data-anim>
           <div className="section-badge" style={{ justifyContent: 'center' }}>
-            <span>⚖️</span>
+            <MiniOrb size="sm" />
             {t('fair.tag')}
           </div>
           <div className="fair-comparison-block">

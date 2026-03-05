@@ -31,12 +31,12 @@ const DEMO_MESSAGES: Message[] = [
     role: 'assistant',
     content: "Let's go 💪 Montée progressive — rock pour chauffer, électro pour finir fort. Tes artistes Artys inclus 🔥",
     tracks: [
-      { artist: 'Arctic Monkeys', title: 'R U Mine?',     duration: '3:21', color: '#c0392b' },
-      { artist: 'Tame Impala',    title: 'Let It Happen', duration: '7:47', color: '#8e44ad' },
-      { artist: 'Artys: Nova K',  title: 'Ignite',        duration: '4:02', color: '#00E5B0', artys: true },
-      { artist: 'Fred again..',   title: 'Jungle',        duration: '3:59', color: '#1a3a6e' },
-      { artist: 'Artys: Mael K',  title: 'Rush Hour',     duration: '3:45', color: '#00E5B0', artys: true },
-      { artist: 'Justice',        title: 'Genesis',       duration: '3:58', color: '#2c3e50' },
+      { artist: 'Arctic Monkeys', title: 'R U Mine?',     duration: '3:21', color: '#252528' },
+      { artist: 'Tame Impala',    title: 'Let It Happen', duration: '7:47', color: '#1e1e22' },
+      { artist: 'Artys: Nova K',  title: 'Ignite',        duration: '4:02', color: '#ffef47', artys: true },
+      { artist: 'Fred again..',   title: 'Jungle',        duration: '3:59', color: '#202024' },
+      { artist: 'Artys: Mael K',  title: 'Rush Hour',     duration: '3:45', color: '#ffef47', artys: true },
+      { artist: 'Justice',        title: 'Genesis',       duration: '3:58', color: '#1c1c20' },
     ],
   },
 ];
@@ -59,86 +59,86 @@ function getFallback(text: string, lang: string): { content: string; tracks?: Tr
   const replies: Record<string, Record<string, { content: string; tracks: Track[] }>> = {
     fr: {
       gym:   { content: "Let's go 💪 Cardio Power activée — rock + électro montée progressive.", tracks: [
-        { artist: 'Peggy Gou',     title: 'Sings Boys',      duration: '3:32', color: '#8B4513' },
-        { artist: 'Fred again..',  title: 'Jungle',          duration: '3:59', color: '#1a3a6e' },
-        { artist: 'Artys: Nova K', title: 'Ignite',          duration: '4:02', color: '#00E5B0', artys: true },
-        { artist: 'Bicep',         title: 'Glue',            duration: '5:02', color: '#2c3e50' },
-        { artist: 'Artys: Mael K', title: 'Rush Hour',       duration: '3:45', color: '#00E5B0', artys: true },
+        { artist: 'Peggy Gou',     title: 'Sings Boys',      duration: '3:32', color: '#252528' },
+        { artist: 'Fred again..',  title: 'Jungle',          duration: '3:59', color: '#202024' },
+        { artist: 'Artys: Nova K', title: 'Ignite',          duration: '4:02', color: '#ffef47', artys: true },
+        { artist: 'Bicep',         title: 'Glue',            duration: '5:02', color: '#1c1c20' },
+        { artist: 'Artys: Mael K', title: 'Rush Hour',       duration: '3:45', color: '#ffef47', artys: true },
       ]},
       focus: { content: "Concentration mode 🎧 Entre dans la zone — ambient + post-rock.", tracks: [
-        { artist: 'Bonobo',        title: 'Kong',            duration: '5:45', color: '#1a4a3a' },
-        { artist: 'Nils Frahm',    title: 'Says',            duration: '8:12', color: '#2a2a4a' },
-        { artist: 'Artys: Luna W', title: 'Deep Space',      duration: '6:30', color: '#00E5B0', artys: true },
-        { artist: 'Jon Hopkins',   title: 'Open Eye Signal', duration: '10:06', color: '#1a3a2a' },
+        { artist: 'Bonobo',        title: 'Kong',            duration: '5:45', color: '#1e1e22' },
+        { artist: 'Nils Frahm',    title: 'Says',            duration: '8:12', color: '#202024' },
+        { artist: 'Artys: Luna W', title: 'Deep Space',      duration: '6:30', color: '#ffef47', artys: true },
+        { artist: 'Jon Hopkins',   title: 'Open Eye Signal', duration: '10:06', color: '#1c1c20' },
       ]},
       party: { content: "Ambiance fête 🎉 On monte le volume !", tracks: [
-        { artist: 'Daft Punk',     title: 'Harder Better…',  duration: '3:45', color: '#2a2a5a' },
-        { artist: 'Justice',       title: 'D.A.N.C.E.',      duration: '3:40', color: '#4a2a1a' },
-        { artist: 'Artys: DJ K',   title: 'Neon Rush',       duration: '4:10', color: '#00E5B0', artys: true },
-        { artist: 'Calvin Harris', title: 'Summer',          duration: '3:34', color: '#1a3a5a' },
+        { artist: 'Daft Punk',     title: 'Harder Better…',  duration: '3:45', color: '#252528' },
+        { artist: 'Justice',       title: 'D.A.N.C.E.',      duration: '3:40', color: '#1e1e22' },
+        { artist: 'Artys: DJ K',   title: 'Neon Rush',       duration: '4:10', color: '#ffef47', artys: true },
+        { artist: 'Calvin Harris', title: 'Summer',          duration: '3:34', color: '#202024' },
       ]},
       road:  { content: "Road trip en vue 🚗 La route t'appartient ✨", tracks: [
-        { artist: 'Arctic Monkeys', title: 'R U Mine?',      duration: '3:21', color: '#c0392b' },
-        { artist: 'Tame Impala',    title: 'Let It Happen',  duration: '7:47', color: '#8e44ad' },
-        { artist: 'Artys: Blue C',  title: 'Open Highway',   duration: '4:22', color: '#00E5B0', artys: true },
-        { artist: 'Fleetwood Mac',  title: 'The Chain',      duration: '4:30', color: '#2a4a1a' },
+        { artist: 'Arctic Monkeys', title: 'R U Mine?',      duration: '3:21', color: '#252528' },
+        { artist: 'Tame Impala',    title: 'Let It Happen',  duration: '7:47', color: '#1e1e22' },
+        { artist: 'Artys: Blue C',  title: 'Open Highway',   duration: '4:22', color: '#ffef47', artys: true },
+        { artist: 'Fleetwood Mac',  title: 'The Chain',      duration: '4:30', color: '#1c1c20' },
       ]},
       default: { content: "Super choix 🎵 Voici un mix varié pour toi !", tracks: [
-        { artist: 'Artys: Nova S',  title: 'Horizon',        duration: '4:12', color: '#00E5B0', artys: true },
-        { artist: 'Stromae',        title: 'Papaoutai',      duration: '4:00', color: '#1a2a4a' },
-        { artist: 'The Weeknd',     title: 'Blinding Lights', duration: '3:20', color: '#4a1a1a' },
-        { artist: 'Artys: Mael K',  title: 'Midnight Run',   duration: '3:45', color: '#00E5B0', artys: true },
+        { artist: 'Artys: Nova S',  title: 'Horizon',        duration: '4:12', color: '#ffef47', artys: true },
+        { artist: 'Stromae',        title: 'Papaoutai',      duration: '4:00', color: '#202024' },
+        { artist: 'The Weeknd',     title: 'Blinding Lights', duration: '3:20', color: '#1e1e22' },
+        { artist: 'Artys: Mael K',  title: 'Midnight Run',   duration: '3:45', color: '#ffef47', artys: true },
       ]},
     },
     en: {
       gym:   { content: "Let's go 💪 Cardio Power playlist — progressive build rock + electro.", tracks: [
-        { artist: 'Peggy Gou',     title: 'Sings Boys',      duration: '3:32', color: '#8B4513' },
-        { artist: 'Fred again..',  title: 'Jungle',          duration: '3:59', color: '#1a3a6e' },
-        { artist: 'Artys: Nova K', title: 'Ignite',          duration: '4:02', color: '#00E5B0', artys: true },
-        { artist: 'Bicep',         title: 'Glue',            duration: '5:02', color: '#2c3e50' },
+        { artist: 'Peggy Gou',     title: 'Sings Boys',      duration: '3:32', color: '#252528' },
+        { artist: 'Fred again..',  title: 'Jungle',          duration: '3:59', color: '#202024' },
+        { artist: 'Artys: Nova K', title: 'Ignite',          duration: '4:02', color: '#ffef47', artys: true },
+        { artist: 'Bicep',         title: 'Glue',            duration: '5:02', color: '#1c1c20' },
       ]},
       focus: { content: "Focus mode on 🎧 Enter the zone — ambient vibes.", tracks: [
-        { artist: 'Bonobo',        title: 'Kong',            duration: '5:45', color: '#1a4a3a' },
-        { artist: 'Artys: Luna W', title: 'Deep Space',      duration: '6:30', color: '#00E5B0', artys: true },
-        { artist: 'Jon Hopkins',   title: 'Open Eye Signal', duration: '10:06', color: '#1a3a2a' },
+        { artist: 'Bonobo',        title: 'Kong',            duration: '5:45', color: '#1e1e22' },
+        { artist: 'Artys: Luna W', title: 'Deep Space',      duration: '6:30', color: '#ffef47', artys: true },
+        { artist: 'Jon Hopkins',   title: 'Open Eye Signal', duration: '10:06', color: '#1c1c20' },
       ]},
       party: { content: "Party vibes 🎉 Let's turn it up!", tracks: [
-        { artist: 'Daft Punk',     title: 'Harder Better…',  duration: '3:45', color: '#2a2a5a' },
-        { artist: 'Artys: DJ K',   title: 'Neon Rush',       duration: '4:10', color: '#00E5B0', artys: true },
-        { artist: 'Calvin Harris', title: 'Summer',          duration: '3:34', color: '#1a3a5a' },
+        { artist: 'Daft Punk',     title: 'Harder Better…',  duration: '3:45', color: '#252528' },
+        { artist: 'Artys: DJ K',   title: 'Neon Rush',       duration: '4:10', color: '#ffef47', artys: true },
+        { artist: 'Calvin Harris', title: 'Summer',          duration: '3:34', color: '#202024' },
       ]},
       road:  { content: "Road trip time 🚗 Own the road ✨", tracks: [
-        { artist: 'Arctic Monkeys', title: 'R U Mine?',      duration: '3:21', color: '#c0392b' },
-        { artist: 'Artys: Blue C',  title: 'Open Highway',   duration: '4:22', color: '#00E5B0', artys: true },
-        { artist: 'Tame Impala',    title: 'Let It Happen',  duration: '7:47', color: '#8e44ad' },
+        { artist: 'Arctic Monkeys', title: 'R U Mine?',      duration: '3:21', color: '#252528' },
+        { artist: 'Artys: Blue C',  title: 'Open Highway',   duration: '4:22', color: '#ffef47', artys: true },
+        { artist: 'Tame Impala',    title: 'Let It Happen',  duration: '7:47', color: '#1e1e22' },
       ]},
       default: { content: "Great taste 🎵 Here's your mix!", tracks: [
-        { artist: 'Artys: Nova S',  title: 'Horizon',        duration: '4:12', color: '#00E5B0', artys: true },
-        { artist: 'The Weeknd',     title: 'Blinding Lights', duration: '3:20', color: '#4a1a1a' },
-        { artist: 'Artys: Mael K',  title: 'Midnight Run',   duration: '3:45', color: '#00E5B0', artys: true },
+        { artist: 'Artys: Nova S',  title: 'Horizon',        duration: '4:12', color: '#ffef47', artys: true },
+        { artist: 'The Weeknd',     title: 'Blinding Lights', duration: '3:20', color: '#1e1e22' },
+        { artist: 'Artys: Mael K',  title: 'Midnight Run',   duration: '3:45', color: '#ffef47', artys: true },
       ]},
     },
     es: {
       gym:   { content: "Let's go 💪 Playlist Cardio Power — rock + electro progresivo.", tracks: [
-        { artist: 'Peggy Gou',     title: 'Sings Boys',      duration: '3:32', color: '#8B4513' },
-        { artist: 'Artys: Nova K', title: 'Ignite',          duration: '4:02', color: '#00E5B0', artys: true },
-        { artist: 'Fred again..',  title: 'Jungle',          duration: '3:59', color: '#1a3a6e' },
+        { artist: 'Peggy Gou',     title: 'Sings Boys',      duration: '3:32', color: '#252528' },
+        { artist: 'Artys: Nova K', title: 'Ignite',          duration: '4:02', color: '#ffef47', artys: true },
+        { artist: 'Fred again..',  title: 'Jungle',          duration: '3:59', color: '#202024' },
       ]},
       focus: { content: "Modo concentración 🎧 Entra en la zona.", tracks: [
-        { artist: 'Bonobo',        title: 'Kong',            duration: '5:45', color: '#1a4a3a' },
-        { artist: 'Artys: Luna W', title: 'Deep Space',      duration: '6:30', color: '#00E5B0', artys: true },
+        { artist: 'Bonobo',        title: 'Kong',            duration: '5:45', color: '#1e1e22' },
+        { artist: 'Artys: Luna W', title: 'Deep Space',      duration: '6:30', color: '#ffef47', artys: true },
       ]},
       party: { content: "Ambiente fiesta 🎉 ¡A subir el volumen!", tracks: [
-        { artist: 'Daft Punk',     title: 'Harder Better…',  duration: '3:45', color: '#2a2a5a' },
-        { artist: 'Artys: DJ K',   title: 'Neon Rush',       duration: '4:10', color: '#00E5B0', artys: true },
+        { artist: 'Daft Punk',     title: 'Harder Better…',  duration: '3:45', color: '#252528' },
+        { artist: 'Artys: DJ K',   title: 'Neon Rush',       duration: '4:10', color: '#ffef47', artys: true },
       ]},
       road:  { content: "Road trip 🚗 La carretera es tuya ✨", tracks: [
-        { artist: 'Arctic Monkeys', title: 'R U Mine?',      duration: '3:21', color: '#c0392b' },
-        { artist: 'Artys: Blue C',  title: 'Open Highway',   duration: '4:22', color: '#00E5B0', artys: true },
+        { artist: 'Arctic Monkeys', title: 'R U Mine?',      duration: '3:21', color: '#252528' },
+        { artist: 'Artys: Blue C',  title: 'Open Highway',   duration: '4:22', color: '#ffef47', artys: true },
       ]},
       default: { content: "Gran elección 🎵 Tu mix personalizado:", tracks: [
-        { artist: 'Artys: Nova S',  title: 'Horizon',        duration: '4:12', color: '#00E5B0', artys: true },
-        { artist: 'The Weeknd',     title: 'Blinding Lights', duration: '3:20', color: '#4a1a1a' },
+        { artist: 'Artys: Nova S',  title: 'Horizon',        duration: '4:12', color: '#ffef47', artys: true },
+        { artist: 'The Weeknd',     title: 'Blinding Lights', duration: '3:20', color: '#1e1e22' },
       ]},
     },
   };
@@ -255,40 +255,37 @@ function EchoTerminal() {
 
   const welcomeByLang: Record<string, string> = {
     fr: 'Salut 👋 Je suis ECHO, ton assistant musical Artys. Dis-moi ce que tu veux écouter — une humeur, une activité, un genre — et je compose ta playlist en quelques secondes. 🎧',
-    en: 'Hey 👋 I\'m ECHO, your Artys music assistant. Tell me what you want to listen to — a mood, activity, or genre — and I\'ll build your playlist in seconds. 🎧',
+    en: "Hey 👋 I'm ECHO, your Artys music assistant. Tell me what you want to listen to — a mood, activity, or genre — and I'll build your playlist in seconds. 🎧",
     es: 'Hola 👋 Soy ECHO, tu asistente musical Artys. Dime qué quieres escuchar y creo tu playlist en segundos. 🎧',
   };
 
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: welcomeByLang[lang] || welcomeByLang.fr },
   ]);
-  const [input,   setInput]   = useState('');
-  const [loading, setLoading] = useState(false);
-  const [, setStep]    = useState(0);
-  const [, setDemo]    = useState(false);
+  const [input,    setInput]    = useState('');
+  const [loading,  setLoading]  = useState(false);
   const [apiError, setApiError] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const bodyRef   = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMessages([{ role: 'assistant', content: welcomeByLang[lang] || welcomeByLang.fr }]);
-    setStep(0); setDemo(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
 
+  // Scroll interne au terminal uniquement — ne touche PAS la fenêtre
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const body = bodyRef.current;
+    if (!body) return;
+    body.scrollTop = body.scrollHeight;
   }, [messages]);
 
-  const playDemoStep = (i: number) => {
-    if (i >= DEMO_MESSAGES.length) return;
-    setTimeout(() => {
-      setMessages(prev => [...prev, DEMO_MESSAGES[i]]);
-      setStep(i + 1);
-    }, i === 0 ? 0 : 500);
-  };
-
   const handleDone = (i: number) => {
-    if (i < DEMO_MESSAGES.length - 1) playDemoStep(i + 1);
+    if (i < DEMO_MESSAGES.length - 1) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, DEMO_MESSAGES[i + 1]]);
+      }, 500);
+    }
   };
 
   const sendMessage = async (text?: string) => {
@@ -360,7 +357,7 @@ function EchoTerminal() {
       </div>
 
       {/* Corps messages */}
-      <div className="ev-body">
+      <div className="ev-body" ref={bodyRef}>
         {messages.map((msg, i) => (
           <MessageBubble
             key={`${i}-${msg.content.slice(0, 10)}`}
@@ -428,6 +425,43 @@ function EchoTerminal() {
   );
 }
 
+// ─── 3 Features avec mini-orb (bloc jaune) ────────────────────────────────────
+function EchoFeatures() {
+  const features = [
+    {
+      title: 'Recommandations Intelligentes',
+      desc: 'ECHO analyse vos goûts musicaux pour créer des playlists personnalisées qui évoluent avec vos préférences.',
+    },
+    {
+      title: 'Conversation Naturelle',
+      desc: 'Demandez simplement à ECHO de trouver la musique parfaite pour votre moment. Elle comprend et répond naturellement.',
+    },
+    {
+      title: 'Découverte Artistique',
+      desc: 'ECHO vous fait découvrir des artistes émergents qui correspondent à votre style, tout en soutenant les créateurs.',
+    },
+  ];
+
+  return (
+    <div className="echo-features-3col">
+      {features.map((feat, i) => (
+        <div key={i} className="echo-feature-card">
+          {/* Mini orb pulsante jaune */}
+          <div className="echo-mini-orb-wrap" aria-hidden="true">
+            <div className="echo-mini-orb-ring echo-mini-orb-ring-2" />
+            <div className="echo-mini-orb-ring echo-mini-orb-ring-1" />
+            <div className="echo-mini-orb" />
+          </div>
+          <div className="echo-feature-body">
+            <h4 className="echo-feature-title">{feat.title}</h4>
+            <p className="echo-feature-desc">{feat.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ─── Section principale ───────────────────────────────────────────────────────
 export default function EchoSection() {
   const { t } = useTranslation();
@@ -462,11 +496,15 @@ export default function EchoSection() {
           <p className="echo-section-sub" data-anim>{t('echo.subtitle')}</p>
         </div>
 
-        {/* Terminal pleine largeur */}
+        {/* Bloc jaune features */}
+        <div className="echo-features-block" data-anim>
+          <EchoFeatures />
+        </div>
+
+        {/* Terminal ECHO pleine largeur */}
         <div className="echo-terminal-wrap" data-anim>
           <EchoTerminal />
         </div>
-
 
       </div>
     </section>
