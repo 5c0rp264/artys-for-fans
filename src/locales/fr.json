@@ -14,7 +14,7 @@
     "title_highlight": "mérite mieux.",
     "title_3": "Toi aussi.",
     "subtitle": "Artys est la première plateforme où écouter de la musique peut te rapporter de l'argent, te connecter à tes artistes préférés, et changer leur carrière.",
-    "cta_primary": "Rejoindre gratuitement →",
+    "cta_primary": "Rejoins ta communauté →",
     "cta_secondary": "Découvrir ECHO 🎧"
   },
   "echo": {
@@ -65,7 +65,7 @@
     "guild_2": "Tu votes sur la setlist, le artwork, les collabs",
     "guild_3": "Tu réalises des missions et tu gagnes des Royaltips",
     "guild_4": "Tu co-produis des projets et tu touches une part des revenus",
-    "cta": "Trouver ma Guilde →"
+    "cta": "Trouve ta Guilde →"
   },
   "referral": {
     "tag": "Parrainage",
@@ -130,7 +130,7 @@
     "title_highlight": "Rejoins la première communauté musicale",
     "title_end": "qui te rémunère.",
     "subtitle": "Sois parmi les premiers fans à accéder aux Backstages de tes artistes préférés. Écoute, soutiens, gagne.",
-    "cta_secondary": "Parler avec l'équipe ↗",
+    "cta_secondary": "Parle avec l'équipe ↗",
     "note": "✦ Lancement orchestré — Rejoins des milliers de fans qui se préparent pour juin 2026",
     "field_email_label": "Ton email",
     "field_email_placeholder": "ton@email.com",
@@ -138,7 +138,7 @@
     "field_genre_placeholder": "— Sélectionne ton genre —",
     "field_artist_label": "Quel artiste aimerais-tu soutenir en premier ?",
     "field_artist_hint": "Colle le profil Instagram ou TikTok de l'artiste — connu ou indépendant, peu importe !",
-    "form_submit": "Rejoindre la liste d'attente",
+    "form_submit": "Rejoins la liste d'attente",
     "form_success_title": "Bienvenue dans la communauté !",
     "form_success_body": "On te contacte avant tout le monde au lancement. À très vite dans l'écosystème Artys ✦",
     "form_consent": "En t'inscrivant, tu acceptes de recevoir les actualités Artys. Zéro spam, désinscription en 1 clic.",
