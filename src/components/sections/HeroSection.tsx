@@ -12,7 +12,6 @@ export default function HeroSection() {
   const { t } = useTranslation();
   const containerRef  = useRef<HTMLDivElement>(null);
   const gifRef        = useRef<HTMLDivElement>(null);
-  const badgeRef      = useRef<HTMLDivElement>(null);
   const titleRef      = useRef<HTMLDivElement>(null);
   const subtitleRef   = useRef<HTMLParagraphElement>(null);
   const ctasRef       = useRef<HTMLDivElement>(null);
@@ -20,16 +19,13 @@ export default function HeroSection() {
   const underlinePath = useRef<SVGPathElement>(null);
 
   useGSAP(() => {
-    // GIF — slide depuis la gauche
-    gsap.fromTo(gifRef.current,
-      { opacity: 0, x: -50 },
-      { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', delay: 0.1 }
-    );
+    // gsap.set() masque les éléments JUSTE AVANT l'animation
+    // → le Hero est visible pendant le flash de chargement
+    gsap.set([gifRef.current, subtitleRef.current, ctasRef.current, tickerRef.current], { opacity: 0 });
 
-    // Badge
-    gsap.fromTo(badgeRef.current,
-      { opacity: 0, x: -20 },
-      { opacity: 1, x: 0, duration: 0.6, ease: 'power3.out', delay: 0.3 }
+    // Phone mockup — slide depuis la gauche
+    gsap.to(gifRef.current,
+      { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', delay: 0.1 }
     );
 
     // Title words
@@ -37,34 +33,31 @@ export default function HeroSection() {
     if (words?.length) {
       gsap.fromTo(words,
         { opacity: 0, y: 60, rotateX: -20 },
-        { opacity: 1, y: 0, rotateX: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.4 }
+        { opacity: 1, y: 0, rotateX: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.3 }
       );
     }
 
-    // Underline SVG orange — se trace après les mots
+    // Underline SVG — se trace après les mots
     if (underlinePath.current) {
       gsap.fromTo(underlinePath.current,
         { strokeDashoffset: 450 },
-        { strokeDashoffset: 0, duration: 1.0, ease: 'power2.inOut', delay: 1.5 }
+        { strokeDashoffset: 0, duration: 1.0, ease: 'power2.inOut', delay: 1.4 }
       );
     }
 
     // Subtitle
-    gsap.fromTo(subtitleRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.0 }
+    gsap.to(subtitleRef.current,
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.9 }
     );
 
     // CTAs
-    gsap.fromTo(ctasRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.2 }
+    gsap.to(ctasRef.current,
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.1 }
     );
 
     // Ticker
-    gsap.fromTo(tickerRef.current,
-      { opacity: 0, y: 16 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 1.5 }
+    gsap.to(tickerRef.current,
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', delay: 1.4 }
     );
 
   }, { scope: containerRef });
@@ -81,25 +74,23 @@ export default function HeroSection() {
         <div className="hero-grid">
 
           {/* ── Colonne gauche : Phone mockup ECHO ── */}
-          <div ref={gifRef} className="hero-gif-col" style={{ opacity: 0 }}>
+          <div ref={gifRef} className="hero-gif-col">
             <EchoPhoneLive />
           </div>
 
           {/* ── Colonne droite : texte ── */}
           <div className="hero-text-col">
 
-            {/* Live Ticker — premier élément visible */}
-            <div ref={tickerRef} style={{ opacity: 0, marginBottom: '24px' }}>
+            {/* Live Ticker */}
+            <div ref={tickerRef} style={{ marginBottom: '24px' }}>
               <ArtysTicker />
             </div>
 
-            {/* Title — H1 deux lignes */}
+            {/* Title — H1 */}
             <h1 ref={titleRef} className="hero-title" style={{ perspective: '800px' }}>
-              {/* Ligne 1 : "La musique que tu aimes" */}
               <span className="hero-title-line">
                 <span className="word">{t('hero.title_1')}</span>
               </span>
-              {/* Ligne 2 : "mérite mieux. Toi aussi." */}
               <span className="hero-title-line">
                 <span className="word" style={{ color: 'var(--accent)' }}>
                   {t('hero.title_highlight')}
@@ -117,12 +108,12 @@ export default function HeroSection() {
             </h1>
 
             {/* Subtitle */}
-            <p ref={subtitleRef} className="hero-subtitle" style={{ opacity: 0 }}>
+            <p ref={subtitleRef} className="hero-subtitle">
               {t('hero.subtitle')}
             </p>
 
             {/* CTAs */}
-            <div ref={ctasRef} className="hero-ctas" style={{ opacity: 0 }}>
+            <div ref={ctasRef} className="hero-ctas">
               <button className="btn-primary" onClick={() => scrollTo('cta')}>
                 {t('hero.cta_primary')}
               </button>
