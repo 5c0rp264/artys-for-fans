@@ -24,9 +24,9 @@ const DEMO_SEQUENCE: ChatMessage[] = [
     tracks: [
       { artist: 'Arctic Monkeys', title: 'R U Mine?',        duration: '3:21', color: '#c0392b' },
       { artist: 'Tame Impala',    title: 'Let It Happen',    duration: '7:47', color: '#8e44ad' },
-      { artist: 'Artys: Nova K',  title: 'Ignite',           duration: '4:02', color: '#00E5B0', artys: true },
+      { artist: 'Artys: Nova K',  title: 'Ignite',           duration: '4:02', color: '#ffef47', artys: true },
       { artist: 'Fred again..',   title: 'Jungle',           duration: '3:59', color: '#1a3a6e' },
-      { artist: 'Artys: Mael K',  title: 'Rush Hour',        duration: '3:45', color: '#00E5B0', artys: true },
+      { artist: 'Artys: Mael K',  title: 'Rush Hour',        duration: '3:45', color: '#ffef47', artys: true },
       { artist: 'Justice',        title: 'Genesis',          duration: '3:58', color: '#2c3e50' },
     ],
   },

@@ -42,7 +42,7 @@ function AnimatedDigit({ digit, color }: { digit: string; color: string }) {
   );
 }
 
-function AnimatedNumber({ value, color = '#00E5B0' }: { value: number; color?: string }) {
+function AnimatedNumber({ value, color = '#ffef47' }: { value: number; color?: string }) {
   const chars = value.toLocaleString('fr-FR').split('');
   return (
     <span style={{ display: 'inline-flex', alignItems: 'flex-end', lineHeight: 1 }}>

@@ -132,6 +132,30 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
+
+        {/* Toggle Fans / Artists en haut du menu mobile */}
+        <div className="mobile-toggle-wrap">
+          <div className="nav-toggle nav-toggle-mobile" role="group" aria-label="Mode">
+            <div ref={pillRef} className="nav-toggle-pill" aria-hidden="true" />
+            <button
+              ref={fansBtnRef}
+              className="nav-toggle-btn active"
+              aria-pressed="true"
+              aria-label="Landing fans"
+            >
+              {t('nav.toggle_fans')}
+            </button>
+            <button
+              className="nav-toggle-btn inactive"
+              aria-pressed="false"
+              aria-label="Aller sur la landing artistes"
+              onClick={handleArtistsClick}
+            >
+              {t('nav.toggle_artists')}
+            </button>
+          </div>
+        </div>
+
         <button className="mobile-nav-link" onClick={() => scrollToSection('backstage')} style={{ background: 'none', border: 'none', textAlign: 'left', borderBottom: '1px solid var(--border)', paddingBottom: '12px' }}>
           {t('nav.backstage')}
         </button>

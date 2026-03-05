@@ -20,6 +20,7 @@ yarn-error.log*
 # env files
 .env
 .env.*
+.dev.vars
 !.env.example
 
 # typescript
@@ -46,3 +47,6 @@ ehthumbs.db
 # Cursor / SpecStory
 .specstory/
 .cursorindexingignore
+
+# Wrangler
+.wrangler/

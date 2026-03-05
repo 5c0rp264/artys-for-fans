@@ -3,7 +3,7 @@
     "backstage": "Backstage",
     "revenus": "Revenus",
     "gouvernance": "Gouvernance",
-    "rejoindre": "Rejoindre →",
+    "rejoindre": "Rejoins →",
     "toggle_fans": "Fans",
     "toggle_artists": "Artistes"
   },
@@ -14,7 +14,7 @@
     "title_highlight": "mérite mieux.",
     "title_3": "Toi aussi.",
     "subtitle": "Artys est la première plateforme où écouter de la musique peut te rapporter de l'argent, te connecter à tes artistes préférés, et changer leur carrière.",
-    "cta_primary": "Rejoindre gratuitement →",
+    "cta_primary": "Rejoins ta communauté →",
     "cta_secondary": "Découvrir ECHO 🎧"
   },
   "echo": {
@@ -33,9 +33,9 @@
     "title_highlight": " Spotify empoche.",
     "title_end": " L'artiste reçoit... 0,003$.",
     "p1": "Chaque semaine, tu passes des heures à écouter de la musique. <strong>Spotify génère des milliards</strong>. L'artiste indépendant que tu adores reçoit moins d'un centime.",
-    "p2": "Et maintenant, l'IA inonde les plateformes de millions de titres générés chaque jour — <em>diluyant mécaniquement les revenus de tes artistes</em>.",
+    "p2": "Et maintenant, l'IA inonde les plateformes de millions de titres générés chaque jour — <em>diluant mécaniquement les revenus de tes artistes</em>.",
     "transition": "Il y a une autre façon de faire.",
-    "ia_title": "⚡ L'IA aggrave tout en 2025",
+    "ia_title": "⚡ <span style=\"color:#fff\">L'IA</span> <span style=\"color:#fe4e4f\">aggrave</span> <span style=\"color:#fff\">tout en</span> <span style=\"color:#fe4e4f\">2026</span>",
     "ia_1": "99 000 nouvelles chansons uploadées chaque jour — dont 34 % générées par IA",
     "ia_2": "Spotify a supprimé 75 millions de titres spam en un an",
     "ia_3": "Deezer signale 50 000 uploads IA par jour",
@@ -65,7 +65,7 @@
     "guild_2": "Tu votes sur la setlist, le artwork, les collabs",
     "guild_3": "Tu réalises des missions et tu gagnes des Royaltips",
     "guild_4": "Tu co-produis des projets et tu touches une part des revenus",
-    "cta": "Trouver ma Guilde →"
+    "cta": "Trouve ta Guilde →"
   },
   "referral": {
     "tag": "Parrainage",
@@ -130,19 +130,20 @@
     "title_highlight": "Rejoins la première communauté musicale",
     "title_end": "qui te rémunère.",
     "subtitle": "Sois parmi les premiers fans à accéder aux Backstages de tes artistes préférés. Écoute, soutiens, gagne.",
-    "cta_secondary": "Parler avec l'équipe ↗",
-    "note": "✦ Lancement orchestré — Rejoins des milliers de fans qui se préparent pour juin 2026",
+    "note_label": "Lancement orchestré",
+    "note_text": "Rejoins des milliers de fans qui se préparent pour juin 2026",
     "field_email_label": "Ton email",
     "field_email_placeholder": "ton@email.com",
     "field_genre_label": "Quel est ton style de musique préféré ?",
     "field_genre_placeholder": "— Sélectionne ton genre —",
     "field_artist_label": "Quel artiste aimerais-tu soutenir en premier ?",
-    "field_artist_placeholder": "Un artiste connu ou pas, peu importe !",
-    "field_artist_hint": "Connu ou pas, peu importe — il pourrait rejoindre Artys.",
-    "form_submit": "Rejoindre la liste d'attente",
+    "field_artist_hint": "Colle le profil Instagram ou TikTok de l'artiste — connu ou indépendant, peu importe !",
+    "form_submit": "Rejoins la liste d'attente",
     "form_success_title": "Bienvenue dans la communauté !",
     "form_success_body": "On te contacte avant tout le monde au lancement. À très vite dans l'écosystème Artys ✦",
-    "form_consent": "En t'inscrivant, tu acceptes de recevoir les actualités Artys. Zéro spam, désinscription en 1 clic."
+    "form_consent": "En t'inscrivant, tu acceptes de recevoir les actualités Artys. Zéro spam, désinscription en 1 clic.",
+    "field_instagram_placeholder": "@nom_artiste",
+    "field_tiktok_placeholder": "@nom_artiste"
   },
   "footer": {
     "tagline": "La première plateforme de streaming équitable où artistes et fans co-créent et co-gagnent — gouvernée par ses membres.",

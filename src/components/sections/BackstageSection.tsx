@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import MiniOrb from '../ui/MiniOrb';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,16 +21,16 @@ export default function BackstageSection() {
   }, { scope: containerRef });
 
   const fanOrdinary = [
-    { icon: '👂', text: t('backstage.ordinary_1') },
-    { icon: '❤️', text: t('backstage.ordinary_2') },
-    { icon: '🔗', text: t('backstage.ordinary_3') },
+    { text: t('backstage.ordinary_1') },
+    { text: t('backstage.ordinary_2') },
+    { text: t('backstage.ordinary_3') },
   ];
 
   const fanGuild = [
-    { icon: '🎙', text: t('backstage.guild_1') },
-    { icon: '🗳', text: t('backstage.guild_2') },
-    { icon: '💰', text: t('backstage.guild_3') },
-    { icon: '🎬', text: t('backstage.guild_4') },
+    { text: t('backstage.guild_1') },
+    { text: t('backstage.guild_2') },
+    { text: t('backstage.guild_3') },
+    { text: t('backstage.guild_4') },
   ];
 
   return (
@@ -38,7 +39,7 @@ export default function BackstageSection() {
 
         <div className="section-title" data-anim>
           <div className="section-badge">
-            <span>🎭</span>
+            <MiniOrb size="sm" />
             {t('backstage.tag')}
           </div>
           <h2>
@@ -59,7 +60,7 @@ export default function BackstageSection() {
             <ul className="backstage-list backstage-list-muted">
               {fanOrdinary.map((item, i) => (
                 <li key={i} className="backstage-list-item">
-                  <span className="backstage-item-icon" aria-hidden="true">{item.icon}</span>
+                  <MiniOrb size="sm" />
                   <span>{item.text}</span>
                 </li>
               ))}
@@ -81,7 +82,7 @@ export default function BackstageSection() {
             <ul className="backstage-list backstage-list-accent">
               {fanGuild.map((item, i) => (
                 <li key={i} className="backstage-list-item">
-                  <span className="backstage-item-icon" aria-hidden="true">{item.icon}</span>
+                  <MiniOrb size="sm" />
                   <span>{item.text}</span>
                 </li>
               ))}

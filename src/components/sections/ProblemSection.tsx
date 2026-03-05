@@ -60,9 +60,7 @@ export default function ProblemSection() {
 
         {/* Bloc IA centré */}
         <div className="problem-ia-wrap" data-anim>
-          <div className="problem-ia-title">
-            {t('problem.ia_title')}
-          </div>
+          <div className="problem-ia-title" dangerouslySetInnerHTML={{ __html: t('problem.ia_title') }} />
           <ul className="problem-ia-list" role="list">
             {iaItems.map((item, i) => (
               <li key={i} className="problem-ia-item">

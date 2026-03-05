@@ -27,6 +27,16 @@ i18n
     },
   });
 
+// Toujours démarrer en haut de page — bloque la restauration auto du navigateur
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+// Double garantie : force le scroll top avant ET après le premier rendu
+window.scrollTo(0, 0);
+requestAnimationFrame(() => {
+  window.scrollTo(0, 0);
+});
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
