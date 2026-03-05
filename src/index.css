@@ -2549,10 +2549,11 @@ h1.hero-title {
 /* Footer input */
 .ev-footer {
   position: relative; z-index: 3;
-  border-top: 1px solid rgba(255,239,71,0.1);
+  border-top: 1px solid rgba(255,239,71,0.18);
   background: rgba(0,0,0,0.25);
   padding: 12px 20px 16px;
   flex-shrink: 0;
+  border-radius: 0 0 20px 20px;
 }
 .ev-input-row {
   display: flex; align-items: center; gap: 10px;
@@ -2578,7 +2579,15 @@ h1.hero-title {
   caret-color: var(--accent);
   padding: 6px 0;
 }
-.ev-input::placeholder { color: rgba(255,255,255,0.22); }
+.ev-input::placeholder {
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+  animation: evPlaceholderPulse 3s ease-in-out infinite;
+}
+@keyframes evPlaceholderPulse {
+  0%,100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
 .ev-input:disabled { opacity: 0.5; }
 .ev-send {
   width: 36px; height: 36px;
@@ -2613,9 +2622,18 @@ h1.hero-title {
   margin: 8px 0 0;
   font-family: var(--font-mono);
   font-size: 10.5px;
-  color: rgba(255,239,71,0.35);
+  color: rgba(255,239,71,0.45);
   text-align: center;
   letter-spacing: 0.04em;
+}
+
+/* Halo jaune pulsant sur le footer input */
+@keyframes evFooterGlow {
+  0%,100% { box-shadow: 0 0 0px rgba(255,239,71,0); }
+  50%      { box-shadow: 0 0 18px rgba(255,239,71,0.18), 0 0 40px rgba(255,239,71,0.08); }
+}
+.ev-footer {
+  animation: evFooterGlow 3s ease-in-out infinite;
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
