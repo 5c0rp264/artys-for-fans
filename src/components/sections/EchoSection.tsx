@@ -265,13 +265,17 @@ function EchoTerminal() {
   const [loading,  setLoading]  = useState(false);
   const [apiError, setApiError] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const bodyRef   = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMessages([{ role: 'assistant', content: welcomeByLang[lang] || welcomeByLang.fr }]);
   }, [lang]);
 
+  // Scroll interne au terminal uniquement — ne touche PAS la fenêtre
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    const body = bodyRef.current;
+    if (!body) return;
+    body.scrollTop = body.scrollHeight;
   }, [messages]);
 
   const handleDone = (i: number) => {
@@ -351,7 +355,7 @@ function EchoTerminal() {
       </div>
 
       {/* Corps messages */}
-      <div className="ev-body">
+      <div className="ev-body" ref={bodyRef}>
         {messages.map((msg, i) => (
           <MessageBubble
             key={`${i}-${msg.content.slice(0, 10)}`}
